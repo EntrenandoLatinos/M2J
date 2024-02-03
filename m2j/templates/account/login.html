@@ -1,0 +1,62 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{{ block.super }}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+<form class="getin_form border-form" id="login" method="POST" action="{% url 'account_login' %}">
+	{% csrf_token %}
+	<div class="row">
+		<div class="col-md-12 col-sm-12">
+			<div class="form-group bottom35">
+				<label for="loginEmail" class="d-none"></label>
+				<input class="form-control" type="text" placeholder="Username or Email" id="loginEmail" name="login" required>
+			</div>
+		</div>
+		<div class="col-md-12 col-sm-12">
+			<div class="form-group bottom35">
+				<label for="loginPass" class="d-none"></label>
+				<input class="form-control" type="password" placeholder="Password" id="loginPass" name="password" required>
+			</div>
+		</div>
+
+		{% if form.errors %}
+			{% for field in form %}
+				{% for error in field.errors %}
+					<div class="alert alert-danger">
+						<strong>{{ error|escape }}</strong>
+					</div>
+				{% endfor %}
+			{% endfor %}
+			{% for error in form.non_field_errors %}
+				<div class="alert alert-danger">
+					<strong>{{ error|escape }}</strong>
+				</div>
+			{% endfor %}
+		{% endif %}
+
+		{% if redirect_field_value %}
+			<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+		{% endif %}
+
+		<div class="col-md-12 col-sm-12">
+			<div class="form-group bottom30 ml-1">
+				<div class="form-check text-left">
+					<input class="form-check-input" checked type="checkbox" value="" id="rememberMe">
+					<label class="form-check-label" for="rememberMe">
+						Keep Me Signed In
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12">
+			<button class="button btn btn-alt">Login</button>
+			<a href="reset-password.html" class="ml-2 bluecolor text-underline">Forget password</a>?
+			<p class="top30 mb-0"> Don't have an account? &nbsp;<a href="register.html" class="bluecolor text-underline">Sign Up Now</a> </p>
+		</div>
+	</div>
+</form>
+
+{% endblock content %}

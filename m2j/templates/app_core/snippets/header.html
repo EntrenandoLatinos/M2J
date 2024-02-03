@@ -27,22 +27,27 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'app_core:index' %}">Home</a>
+                        <a class="nav-link" href="{% url 'app_core:index' %}"> Home </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'app_core:about' %}">About Us</a>
+                        <a class="nav-link" href="{% url 'app_core:about' %}"> About Us </a>
+                    </li>
+                    <li class="nav-item dropdown position-relative">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Services </a>
+                        <div class="dropdown-menu">
+                            {% for service in servicios %}
+                                <a class="dropdown-item" href="">{{service.title}}</a>
+                            {% endfor %}
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'app_core:services' %}">Services</a>
+                        <a class="nav-link" href="{% url 'app_core:faq' %}"> Faq's </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'app_core:faq' %}">Faq's</a>
+                        <a class="nav-link" href="{% url 'app_core:contact' %}"> Contact </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'app_core:contact' %}">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'app_core:privacy' %}">Privacy</a>
+                        <a class="nav-link" href="{% url 'app_core:privacy' %}"> Privacy </a>
                     </li>
                 </ul>
             </div>
@@ -61,22 +66,33 @@
             <nav class="side-nav w-100">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'app_core:index' %}">Home</a>
+                        <a class="nav-link" href="{% url 'app_core:index' %}"> Home </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'app_core:about' %}">About Us</a>
+                        <a class="nav-link" href="{% url 'app_core:about' %}"> About Us </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'app_core:services' %}">Services</a>
+                        <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages2">
+                            Services <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div id="sideNavPages2" class="collapse sideNavPages">
+                            <ul class="navbar-nav">
+                                {% for service in servicios %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="">{{service.title}}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'app_core:faq' %}">Faq's</a>
+                        <a class="nav-link" href="{% url 'app_core:faq' %}"> Faq's </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'app_core:contact' %}">Contact</a>
+                        <a class="nav-link" href="{% url 'app_core:contact' %}"> Contact </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'app_core:privacy' %}">Privacy</a>
+                        <a class="nav-link" href="{% url 'app_core:privacy' %}"> Privacy </a>
                     </li>
                 </ul>
             </nav>

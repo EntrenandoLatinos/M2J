@@ -1,0 +1,43 @@
+{% extends "account/base.html" %}
+{% load static %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+
+{% block content %}
+
+<form method="POST" action="{% url 'account_logout' %}" class="login100-form validate-form">
+   {% csrf_token %}
+   {% if redirect_field_value %}
+   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+   {% endif %}
+   <span class="login100-form-logo">
+      <img src="{% static 'app_core/assets/img/dp.jpg' %}" class="imgroundcorners" alt="John Doe">
+   </span>
+   <span class="login100-form-title  p-t-27">
+      {% trans "Sign Out" %}
+   </span>
+   <p class="text-center txt-locked">
+      {% trans 'Are you sure you want to sign out?' %}
+   </p>
+   <div class="container-login100-form-btn">
+      <button type="submit" class="login100-form-btn">
+         {% trans 'Sign Out' %}
+      </button>
+      <a id="back-link" class="btn btn-circle yellow" style="font-size: 18px; text-transform: capitalize;">Cancelar</a>
+   </div>
+</form>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+   var element = document.getElementById('back-link');
+   element.setAttribute('href', document.referrer);
+   element.onclick = function () {
+      history.back();
+      return false;
+   }
+</script>
+{% endblock extra_js %}

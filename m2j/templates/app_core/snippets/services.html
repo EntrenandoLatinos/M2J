@@ -29,108 +29,25 @@
             </div>
         </div> -->
         <div id="services-measonry" class="cbp">
+           {% for service in servicios %}
             <div class="cbp-item digital brand design">
-                <div class="services-main">
-                    <div class="image bottom10">
-                        <div class="image"><img alt="SEO" src="{% static 'app_core/construction/images/service-1.jpg' %}"></div>
-                        <div class="overlay">
-                            <a href="services-detail.html" class="overlay_center border_radius"><i class="fa fa-eye"></i></a>
+                    <div class="services-main">
+                        <div class="image bottom10">
+                            <div class="image"><img alt="SEO" src="{{ service.imagen.url }}"></div>
+                            <div class="overlay">
+                                <a href="services-detail.html" class="overlay_center border_radius"><i class="fa fa-eye"></i></a>
+                            </div>
+                        </div>
+                        <div class="services-content brand text-center text-md-left">
+                            <h3 class="bottom10 darkcolor"><a href="services-detail.html">{{service.title}}</a></h3>
+                            <!-- <p class="bottom15">Phasellus lorem enim, luctus ut velit eget, convallis egestas eros.
+                                Sed ornare ligula Progressively generate synergistic eget.
+                            </p> -->
+                            <a href="services-detail.html" class="button-readmore">Learn More</a>
                         </div>
                     </div>
-                    <div class="services-content brand text-center text-md-left">
-                        <h3 class="bottom10 darkcolor"><a href="services-detail.html">Financial Planning</a></h3>
-                        <p class="bottom15">Phasellus lorem enim, luctus ut velit eget, convallis egestas eros.
-                            Sed ornare ligula Progressively generate synergistic eget.
-                        </p>
-                        <a href="services-detail.html" class="button-readmore">Learn More</a>
-                    </div>
                 </div>
-            </div>
-            <div class="cbp-item digital graphics">
-                <div class="services-main">
-                    <div class="image bottom10">
-                        <div class="image"><img alt="SEO" src="{% static 'app_core/construction/images/service-2.jpg' %}"></div>
-                        <div class="overlay">
-                            <a href="services-detail.html" class="overlay_center border_radius"><i class="fa fa-eye"></i></a>
-                        </div>
-                    </div>
-                    <div class="services-content text-center text-md-left">
-                        <h3 class="bottom10 darkcolor"><a href="services-detail.html">Financial Planning</a></h3>
-                        <p class="bottom15">Phasellus lorem enim, luctus ut velit eget, convallis egestas eros.
-                            Sed ornare ligula Progressively generate synergistic eget.
-                        </p>
-                        <a href="services-detail.html" class="button-readmore">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="cbp-item design">
-                <div class="services-main">
-                    <div class="image bottom10">
-                        <div class="image"><img alt="SEO" src="{% static 'app_core/construction/images/service-3.jpg' %}"></div>
-                        <div class="overlay">
-                            <a href="services-detail.html" class="overlay_center border_radius"><i class="fa fa-eye"></i></a>
-                        </div>
-                    </div>
-                    <div class="services-content text-center text-md-left">
-                        <h3 class="bottom10 darkcolor"><a href="services-detail.html">Business Solution</a></h3>
-                        <p class="bottom15">Phasellus lorem enim, luctus ut velit eget, convallis egestas eros.
-                            Sed ornare ligula Progressively generate synergistic eget.
-                        </p>
-                        <a href="services-detail.html" class="button-readmore">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="cbp-item graphics">
-                <div class="services-main">
-                    <div class="image bottom10">
-                        <div class="image"><img alt="SEO" src="{% static 'app_core/construction/images/service-4.jpg' %}"></div>
-                        <div class="overlay">
-                            <a href="services-detail.html" class="overlay_center border_radius"><i class="fa fa-eye"></i></a>
-                        </div>
-                    </div>
-                    <div class="services-content text-center text-md-left">
-                        <h3 class="bottom10 darkcolor"><a href="services-detail.html">Financial Planning</a></h3>
-                        <p class="bottom15">Phasellus lorem enim, luctus ut velit eget, convallis egestas eros.
-                            Sed ornare ligula Progressively generate synergistic eget.
-                        </p>
-                        <a href="services-detail.html" class="button-readmore">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="cbp-item digital">
-                <div class="services-main">
-                    <div class="image bottom10">
-                        <div class="image"><img alt="SEO" src="{% static 'app_core/construction/images/service-5.jpg' %}"></div>
-                        <div class="overlay">
-                            <a href="services-detail.html" class="overlay_center border_radius"><i class="fa fa-eye"></i></a>
-                        </div>
-                    </div>
-                    <div class="services-content text-center text-md-left">
-                        <h3 class="bottom10 darkcolor"><a href="services-detail.html">Business Solution</a></h3>
-                        <p class="bottom15">Phasellus lorem enim, luctus ut velit eget, convallis egestas eros.
-                            Sed ornare ligula Progressively generate synergistic eget.
-                        </p>
-                        <a href="services-detail.html" class="button-readmore">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="cbp-item brand design graphics">
-                <div class="services-main">
-                    <div class="image bottom10">
-                        <div class="image"><img alt="SEO" src="{% static 'app_core/construction/images/service-6.jpg' %}"></div>
-                        <div class="overlay">
-                            <a href="services-detail.html" class="overlay_center border_radius"><i class="fa fa-eye"></i></a>
-                        </div>
-                    </div>
-                    <div class="services-content text-center text-md-left">
-                        <h3 class="bottom10 darkcolor"><a href="services-detail.html">Financial Planning</a></h3>
-                        <p class="bottom15">Phasellus lorem enim, luctus ut velit eget, convallis egestas eros.
-                            Sed ornare ligula Progressively generate synergistic eget.
-                        </p>
-                        <a href="services-detail.html" class="button-readmore">Learn More</a>
-                    </div>
-                </div>
-            </div>
+           {% endfor %}
         </div>
     </div>
 </section>

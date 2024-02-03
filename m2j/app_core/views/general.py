@@ -1,26 +1,39 @@
 from django.shortcuts import render
+from app_core.models import Service
 
 
 def index(request):
-  context = {}
+  servicios = Service.objects.all()
+  context = {'servicios':servicios}
   return render(request, 'app_core/pages/index.html', context)
 
 def about(request):
-  context = {}
+  servicios = Service.objects.all()
+  context = {'servicios':servicios}
   return render(request, 'app_core/pages/about.html', context)
 
 def services(request):
-  context = {}
+  servicios = Service.objects.all()
+  context = {'servicios':servicios}
   return render(request, 'app_core/pages/services.html', context)
 
+def services_view(request, pk):
+  servicios = Service.objects.all()
+  servicio = Service.objects.get(pk=pk)
+  context = {'servicio':servicio, 'servicios':servicios}
+  return render(request, 'app_core/pages/service.html', context)
+
 def faq(request):
-  context = {}
+  servicios = Service.objects.all()
+  context = {'servicios':servicios}
   return render(request, 'app_core/pages/faq.html', context)
 
 def contact(request):
-  context = {}
+  servicios = Service.objects.all()
+  context = {'servicios':servicios}
   return render(request, 'app_core/pages/contact.html', context)
 
 def privacy(request):
-  context = {}
+  servicios = Service.objects.all()
+  context = {'servicios':servicios}
   return render(request, 'app_core/pages/privacy.html', context)
