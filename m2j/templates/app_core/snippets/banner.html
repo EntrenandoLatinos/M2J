@@ -10,7 +10,7 @@
                 <li data-index="rs-01" data-transition="fade" data-slotamount="default" data-easein="Power100.easeIn" data-easeout="Power100.easeOut" data-masterspeed="2000" data-fsmasterspeed="1500" data-param1="01">
                     <!-- MAIN IMAGE -->
                     <div class="overlay overlay-blue opacity-10"></div>
-                    <img src="{% static 'app_core/construction/images/banner-1.jpg' %}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                    <img src="{{ banner.image.url }}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
                     <!-- LAYER NR. 1 -->
                     <div class="tp-caption tp-resizeme"
                          data-x="['left','center','center','center']" data-hoffset="['0','0','0','0']"
@@ -19,7 +19,7 @@
                          data-textAlign="['center','center','center','center']"
                          data-responsive_offset="on" data-start="1000"
                          data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                        <h2 class="text-capitalize font-xlight whitecolor heading-title-small">Title</h2>
+                        <h2 class="text-capitalize font-xlight whitecolor heading-title-small">{{banner.title}}</h2>
                     </div>
                     <!-- LAYER NR. 2 -->
                     <div class="tp-caption tp-resizeme"
@@ -29,7 +29,7 @@
                          data-textAlign="['center','center','center','center']"
                          data-responsive_offset="on" data-start="1000"
                          data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                        <h1 class="text-capitalize font-xlight defaultcolor">Subtitle</h1>
+                        <h1 class="text-capitalize font-xlight defaultcolor">{{banner.subtitle}}</h1>
                     </div>
                     <!-- LAYER NR. 3 -->
                     <div class="tp-caption tp-resizeme"
@@ -39,7 +39,7 @@
                          data-textAlign="['left','center','center','center']"
                          data-responsive_offset="on" data-start="1500"
                          data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                        <p class="text-capitalize font-xlight whitecolor">Lorem ipsum dolor sit amet, consectetur adipiscing <br/>elit. Etiam eget velit interdum, sodales erat <br/>commodo, faucibus urna.</p>
+                        <p class="text-capitalize font-xlight whitecolor">{{banner.description}}</p>
                     </div>
                     <!-- LAYER NR. 4 -->
                     <div class="tp-caption tp-resizeme"

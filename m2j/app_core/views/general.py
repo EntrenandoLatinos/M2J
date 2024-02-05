@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from app_core.models import Service
+from app_core.models import Banner, Service
 
 
 def index(request):
+  banner = Banner.objects.all().last()
   servicios = Service.objects.all()
-  context = {'servicios':servicios}
+  context = {'servicios':servicios, 'banner':banner}
   return render(request, 'app_core/pages/index.html', context)
 
 def about(request):
