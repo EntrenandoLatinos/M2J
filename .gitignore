@@ -5,8 +5,8 @@ __pycache__/
 # Archivos de migraciones
 /migrations/
 /migrations/*/
-/app_core/migrations/*/
-/app_user/migrations/*/
+m2j/app_core/migrations/*/
+m2j/app_user/migrations/*/
 
 # Base de datos SQLite
 *.sqlite3
