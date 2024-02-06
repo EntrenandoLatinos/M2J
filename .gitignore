@@ -4,6 +4,7 @@ __pycache__/
 
 # Archivos de migraciones
 /migrations/
+/migrations/*/
 
 # Base de datos SQLite
 *.sqlite3
