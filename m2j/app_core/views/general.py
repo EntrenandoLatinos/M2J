@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from app_core.models import Banner, Service
+from app_core.models import Banner, Service, Faq
 
 
 def index(request):
@@ -25,8 +25,9 @@ def services_view(request, pk):
   return render(request, 'app_core/pages/service.html', context)
 
 def faq(request):
+  faqs = Faq.objects.all()
   servicios = Service.objects.all()
-  context = {'servicios':servicios}
+  context = {'servicios':servicios, 'faqs':faqs}
   return render(request, 'app_core/pages/faq.html', context)
 
 def contact(request):

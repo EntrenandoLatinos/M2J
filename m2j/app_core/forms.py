@@ -68,6 +68,9 @@ class ServiceForm(forms.ModelForm):
             'description_finish': forms.Textarea(attrs={'class': 'resizable_textarea form-control'}),
         }
 
+class ServiceDeleteForm(forms.Form):
+    id_to_delete = forms.IntegerField(widget=forms.HiddenInput())
+
 class SubServiceForm(forms.ModelForm):
     class Meta:
         model = SubService

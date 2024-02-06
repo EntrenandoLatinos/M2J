@@ -69,7 +69,21 @@ urlpatterns = [
         administrator.testimonial_update,
         name='testimonial_update'
     ),
-
+    path(
+        'administrator/faqs/',
+        administrator.faqs,
+        name='faqs'
+    ),
+    path(
+        'administrator/faq_create/',
+        administrator.faq_create,
+        name='faq_create'
+    ),
+    path(
+        'administrator/faq_update/<int:pk>/',
+        administrator.faq_update,
+        name='faq_update'
+    ),
     path(
         'administrator/privacy_update/',
         administrator.privacy_update,

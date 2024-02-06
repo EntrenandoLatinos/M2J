@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from app_core.forms import ContactForm, BannerForm, AboutForm, SkillForm, CounterForm, ServiceForm, SubServiceForm, TestimonialForm, TestimonialDeleteForm, PartnerForm, FaqForm, PrivacyForm
+from app_core.forms import ContactForm, BannerForm, AboutForm, SkillForm, CounterForm, ServiceForm, ServiceDeleteForm, SubServiceForm, TestimonialForm, TestimonialDeleteForm, PartnerForm, FaqForm, PrivacyForm
 from app_core.models import Contact, Banner, About, Skill, Counter, Service, SubService, Testimonial, Partner, Faq, Privacy
 
 def login_redirect(request):
@@ -110,14 +110,25 @@ def service_update(request, pk):
     service = get_object_or_404(Service, id=pk)
 
     if request.method == 'POST':
-        service_form = ServiceForm(request.POST, request.FILES, instance=service)
-        if service_form.is_valid():
-            service_form.save()
-            return redirect('app_user:services')
+        if 'update_service' in request.POST:
+            service_form = ServiceForm(request.POST, request.FILES, instance=service, prefix='service_update')
+            if service_form.is_valid():
+                service_form.save()
+                return redirect('app_user:services')
+        elif 'delete_service' in request.POST:
+            print("paso 1")
+            service_delete_form = ServiceDeleteForm(request.POST, prefix='service_delete', initial={'id_to_delete': pk})
+            print("paso 2")
+            if service_delete_form.is_valid():
+                id_to_delete = service_delete_form.cleaned_data['id_to_delete']
+                # Eliminar el registro con el id especificado
+                Service.objects.filter(id=id_to_delete).delete()
+                return redirect('app_user:services')
     else:
-        service_form = ServiceForm(instance=service)
+        service_form = ServiceForm(instance=service, prefix='testimonial_update')
+        service_delete_form = ServiceDeleteForm(prefix='service_delete', initial={'id_to_delete': pk})
 
-    context = {'service':service, 'service_form':service_form}
+    context = {'service':service, 'service_form':service_form, 'service_delete_form':service_delete_form}
     return render(request, 'app_user/pages/service_update.html', context)
 
 @login_required
@@ -151,10 +162,8 @@ def testimonial_update(request, pk):
                 return redirect('app_user:testimonials')
         
         elif 'delete_testimonial' in request.POST:
-            print("Paso 1")
             testimonial_delete_form = TestimonialDeleteForm(request.POST, prefix='testimonial_delete', initial={'id_to_delete': pk})
             if testimonial_delete_form.is_valid():
-                print("Paso 2")
                 id_to_delete = testimonial_delete_form.cleaned_data['id_to_delete']
                 # Eliminar el registro con el id especificado
                 Testimonial.objects.filter(id=id_to_delete).delete()
@@ -165,6 +174,45 @@ def testimonial_update(request, pk):
 
     context = {'testimonial':testimonial, 'testimonial_form':testimonial_form, 'testimonial_delete_form':testimonial_delete_form}
     return render(request, 'app_user/pages/testimonial_update.html', context)
+
+@login_required
+def faqs(request):
+    faqs = Faq.objects.all()
+
+    if request.method == 'POST':
+        faq_id = request.POST.get('deleteFaqInput', '')
+        Faq.objects.filter(pk=faq_id).delete()
+
+    context = {'faqs':faqs}
+    return render(request, 'app_user/pages/faqs.html', context)
+
+@login_required
+def faq_create(request):
+    if request.method == 'POST':
+        faq_form = FaqForm(request.POST, request.FILES)
+        if faq_form.is_valid():
+            new_faq = faq_form.save()
+            return redirect('app_user:faqs')
+    else:
+        faq_form = FaqForm()
+
+    return render(request, 'app_user/pages/faq_create.html', {'faq_form': faq_form})
+
+@login_required
+def faq_update(request, pk):
+    faq = get_object_or_404(Faq, id=pk)
+
+    if request.method == 'POST':
+        faq_form = FaqForm(request.POST, request.FILES, instance=faq)
+        if faq_form.is_valid():
+            faq_form.save()
+            return redirect('app_user:faqs')
+        
+    else:
+        faq_form = ServiceForm(instance=faq)
+
+    context = {'faq':faq, 'faq_form':faq_form}
+    return render(request, 'app_user/pages/faq_update.html', context)
 
 @login_required
 def privacy_update(request):
