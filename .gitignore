@@ -1,6 +1,7 @@
 # Archivos de caché
 __pycache__/
 *.pyc
+/media/
 
 # Archivos de migraciones
 *_initial.py
