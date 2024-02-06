@@ -3,10 +3,7 @@ __pycache__/
 *.pyc
 
 # Archivos de migraciones
-/migrations/
-/migrations/*/
-m2j/app_core/migrations/*/
-m2j/app_user/migrations/*/
+*_initial.py
 
 # Base de datos SQLite
 *.sqlite3
