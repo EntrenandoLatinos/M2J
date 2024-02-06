@@ -1,0 +1,10 @@
+# Archivos de caché
+__pycache__/
+*.pyc
+
+# Archivos de migraciones
+/migrations/
+
+# Base de datos SQLite
+*.sqlite3
+*.db
