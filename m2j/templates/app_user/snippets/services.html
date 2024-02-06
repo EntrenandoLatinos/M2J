@@ -28,7 +28,11 @@
                                 <div class="thumbnail" style="height: 100%;">
                                     <div class="image view view-first" style="height: 100%;">
                                         <a href="{% url 'app_user:service_update' service.id %}">
-                                            <img style="width: 100%; display: block;" src="{{ service.image.url }}" alt="image" />
+                                            {% if service.image %}
+                                                <img style="width: 100%; display: block;" src="{{ service.image.url }}" alt="image" />
+                                            {% else %}
+                                                <img alt="SEO" src="{% static 'app_core/construction/images/service-1.jpg' %}">
+                                            {% endif %}
                                             <!-- <div class="mask">
                                                 <p>Your Text</p>
                                                 <div class="tools tools-bottom">

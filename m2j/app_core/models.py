@@ -38,8 +38,8 @@ class Banner(AuditoriaFecha):
     
 class About(AuditoriaFecha):
     image = models.ImageField(upload_to='about/', null=True, blank=True)
-    about = models.TextField("About", max_length=60, null=True, blank=True)
-    mision = models.TextField("Mision", max_length=60, null=True, blank=True)
+    about = models.TextField("About", null=True, blank=True)
+    mision = models.TextField("Mision", null=True, blank=True)
     vision = models.TextField("Vision", null=True, blank=True)
     
     class Meta:

@@ -21,8 +21,8 @@
     <nav class="navbar navbar-expand-lg transparent-bg darkcolor static-nav">
         <div class="container bgdefault nav-cont">
             <a class="navbar-brand" href="{% url 'app_core:index' %}">
-                <img src="{% static 'app_core/construction/images/logo.png' %}" alt="logo" class="logo-default">
-                <img src="{% static 'app_core/construction/images/logo.png' %}" alt="logo" class="logo-scrolled">
+                <img src="{% static 'app_core/construction/images/logo-gray.png' %}" alt="logo" class="logo-default">
+                <img src="{% static 'app_core/construction/images/logo-gray.png' %}" alt="logo" class="logo-scrolled">
             </a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
@@ -36,7 +36,7 @@
                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Services </a>
                         <div class="dropdown-menu">
                             {% for service in servicios %}
-                                <a class="dropdown-item" href="">{{service.title}}</a>
+                                <a class="dropdown-item" href="{% url 'app_core:services_view' service.id %}">{{service.title}}</a>
                             {% endfor %}
                         </div>
                     </li>
@@ -79,7 +79,7 @@
                             <ul class="navbar-nav">
                                 {% for service in servicios %}
                                     <li class="nav-item">
-                                        <a class="nav-link" href="">{{service.title}}</a>
+                                        <a class="nav-link" href="{% url 'app_core:services_view' service.id %}">{{service.title}}</a>
                                     </li>
                                 {% endfor %}
                             </ul>

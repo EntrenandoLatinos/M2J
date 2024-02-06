@@ -1,0 +1,24 @@
+{% extends "app_user/base.html" %}
+
+{% load static %}
+
+{% block head_title %}{{ block.super }} Index{% endblock head_title %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..." 
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    .icono-grande {
+        font-size: 3em;
+    }
+</style>{% endblock extra_styles %}
+
+{% block content %}
+
+<!-- start Banner Update -->
+    {% include 'app_user/snippets/index.html' %}
+<!-- end Banner Update -->
+
+{% endblock content %}
+
+{% block extra_javascript %}{% endblock extra_javascript %}

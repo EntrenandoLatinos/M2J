@@ -17,10 +17,10 @@
                             <span class="defaultcolor mb-3">M2J Roofing</span>
                             <h3 class="darkcolor font-normal mb-4">Our Miami Agency</h3>
                         </div>
-                        <p class="bottom10">Address: 309, New Cavendish St, EC1Y 3WK</p>
-                        <p class="bottom10">0800 214 5252</p>
-                        <p class="bottom10">0800 214 5253</p>
-                        <p class="bottom10"><a href="mailto:polpo@MegaOneagency.co.uk">polpo@MegaOneagency.co.uk</a></p>
+                        <p class="bottom10">Address: {{contact.location}}</p>
+                        <p class="bottom10">{{contact.phone1}}</p>
+                        <p class="bottom10">{{contact.phone2}}</p>
+                        <p class="bottom10"><a href="mailto:polpo@MegaOneagency.co.uk">{{contact.email}}</a></p>
                         <p class="bottom10">Mon-Fri: 9am-5pm</p>
                         <ul class="social-icons mt-4 mb-4 mb-sm-0 wow fadeInUp no-border darkcolor" data-wow-delay="300ms">
                             <li><a href="javascript:void(0)" class="facebook"><i class="fab fa-facebook-f"></i> </a> </li>
@@ -65,41 +65,38 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-md-3">
+            <div class="col-lg-4 col-md-4">
                 <div class="widget text-center top60 w-100 p-0">
                     <div class="contact-box">
                         <span class="icon-contact bluecolor"><i class="fas fa-mobile-alt"></i></span>
-                        <p class="bottom0"><a href="tel:+14046000396">+14046000396</a></p>
-                        <p class="d-block"><a href="tel:+43720778972">+43720778972</a></p>
+                        <p class="bottom0"><a href="tel:+14046000396">{{contact.phone1}}</a></p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3">
+            <div class="col-lg-4 col-md-4">
                 <div class="widget text-center top60 w-100 p-0">
                     <div class="contact-box">
                         <span class="icon-contact bluecolor"><i class="fas fa-map-marker-alt"></i></span>
-                        <p class="bottom0">123 Street NYC , USA </p>
-                        <p class="d-block">123 Street Yolo , Austria </p>
+                        <p class="bottom0">{{contact.location}} </p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3">
+            <div class="col-lg-4 col-md-4">
                 <div class="widget text-center top60 w-100 p-0">
                     <div class="contact-box">
                         <span class="icon-contact bluecolor"><i class="far fa-envelope"></i></span>
-                        <p class="bottom0"><a href="mailto:admin@website.com">admin@website.com</a></p>
-                        <p class="d-block"><a href="mailto:email@website.com">email@website.com</a></p>
+                        <p class="bottom0"><a href="mailto:admin@website.com">{{contact.email}}</a></p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3">
+            <!-- <div class="col-lg-3 col-md-3">
                 <div class="widget text-center top60 w-100 p-0">
                     <div class="contact-box">
                         <span class="icon-contact bluecolor"><i class="far fa-clock"></i></span>
                         <p class="bottom15">UTC−05:00 <span class="d-block">UTC+01:00</span></p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>

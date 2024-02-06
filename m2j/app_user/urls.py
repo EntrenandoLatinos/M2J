@@ -55,6 +55,21 @@ urlpatterns = [
         name='service_update'
     ),
     path(
+        'administrator/subservices/<int:pk>/',
+        administrator.subservices,
+        name='subservices'
+    ),
+    path(
+        'administrator/subservice_create/<int:pk>/',
+        administrator.subservice_create,
+        name='subservice_create'
+    ),
+    path(
+        'administrator/subservice_update/<int:pk>/',
+        administrator.subservice_update,
+        name='subservice_update'
+    ),
+    path(
         'administrator/testimonials/',
         administrator.testimonials,
         name='testimonials'
@@ -68,6 +83,21 @@ urlpatterns = [
         'administrator/testimonial_update/<int:pk>/',
         administrator.testimonial_update,
         name='testimonial_update'
+    ),
+    path(
+        'administrator/partners/',
+        administrator.partners,
+        name='partners'
+    ),
+    path(
+        'administrator/partner_create/',
+        administrator.partner_create,
+        name='partner_create'
+    ),
+    path(
+        'administrator/partner_update/<int:pk>/',
+        administrator.partner_update,
+        name='partner_update'
     ),
     path(
         'administrator/faqs/',

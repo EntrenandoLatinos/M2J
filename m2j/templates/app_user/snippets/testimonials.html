@@ -28,7 +28,13 @@
                                 <div class="thumbnail" style="height: 100%;">
                                     <div class="image view view-first" style="height: 100%;">
                                         <a href="{% url 'app_user:testimonial_update' testimonial.id %}">
+                                        {% if testimonial.image %}
                                             <img style="width: 100%; display: block;" src="{{ testimonial.image.url }}" alt="image" />
+                                        {% else %}
+                                            <img style="width: 100%; display: block;" src="{% static 'app_core/construction/images/user.png' %}" alt="image">
+                                        {% endif %}
+                                            
+                                            
                                             <!-- <div class="mask">
                                                 <p>Your Text</p>
                                                 <div class="tools tools-bottom">

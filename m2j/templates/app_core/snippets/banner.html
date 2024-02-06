@@ -10,7 +10,11 @@
                 <li data-index="rs-01" data-transition="fade" data-slotamount="default" data-easein="Power100.easeIn" data-easeout="Power100.easeOut" data-masterspeed="2000" data-fsmasterspeed="1500" data-param1="01">
                     <!-- MAIN IMAGE -->
                     <div class="overlay overlay-blue opacity-10"></div>
-                    <img src="{{ banner.image.url }}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                    {% if banner.image %}
+                        <img src="{{ banner.image.url }}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                    {% else %}
+                        <img src="{% static 'app_core/construction/images/banner-1.jpg' %}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                    {% endif %}
                     <!-- LAYER NR. 1 -->
                     <div class="tp-caption tp-resizeme"
                          data-x="['left','center','center','center']" data-hoffset="['0','0','0','0']"

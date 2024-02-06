@@ -1,16 +1,31 @@
 from django.shortcuts import render
-from app_core.models import Banner, Service, Faq
+from app_core.models import Contact, Banner, About, Skill, Counter, Service, SubService, Testimonial, Partner, Faq, Privacy
 
 
 def index(request):
   banner = Banner.objects.all().last()
+  about = About.objects.all().last()
+  skills = Skill.objects.all().last()
+  indicators = Counter.objects.all().last()
   servicios = Service.objects.all()
-  context = {'servicios':servicios, 'banner':banner}
+  testimonials = Testimonial.objects.all()
+  partners = Partner.objects.all()
+  context = {
+    'banner':banner,
+    'about':about,
+    'skills':skills,
+    'indicators':indicators,
+    'servicios':servicios,
+    'testimonials':testimonials,
+    'partners':partners,
+    }
   return render(request, 'app_core/pages/index.html', context)
 
 def about(request):
+  about = About.objects.all().last()
+  skills = Skill.objects.all().last()
   servicios = Service.objects.all()
-  context = {'servicios':servicios}
+  context = {'servicios':servicios, 'about':about, 'skills':skills,}
   return render(request, 'app_core/pages/about.html', context)
 
 def services(request):
@@ -21,7 +36,8 @@ def services(request):
 def services_view(request, pk):
   servicios = Service.objects.all()
   servicio = Service.objects.get(pk=pk)
-  context = {'servicio':servicio, 'servicios':servicios}
+  subservicios = SubService.objects.filter(service=pk)
+  context = {'servicio':servicio, 'servicios':servicios, 'subservicios':subservicios}
   return render(request, 'app_core/pages/service.html', context)
 
 def faq(request):
@@ -31,11 +47,14 @@ def faq(request):
   return render(request, 'app_core/pages/faq.html', context)
 
 def contact(request):
+  contact = Contact.objects.all().last()
   servicios = Service.objects.all()
-  context = {'servicios':servicios}
+  testimonials = Testimonial.objects.all()
+  context = {'servicios':servicios, 'contact':contact, 'testimonials':testimonials}
   return render(request, 'app_core/pages/contact.html', context)
 
 def privacy(request):
   servicios = Service.objects.all()
-  context = {'servicios':servicios}
+  privacy = Privacy.objects.all().last()
+  context = {'servicios':servicios, 'privacy':privacy}
   return render(request, 'app_core/pages/privacy.html', context)

@@ -5,22 +5,26 @@
     <div class="container aboutus">
         <div class="row align-items-center">
             <div class="col-lg-5 col-md-5 padding_bottom_half">
+            {% if about.image %}
+                <div class="image"><img alt="SEO" src="{{about.image.url}}"></div>
+            {% else %}
                 <div class="image"><img alt="SEO" src="{% static 'app_core/construction/images/aboutus.jpg' %}"></div>
+            {% endif %}
             </div>
             <div class="col-lg-6 offset-lg-1 col-md-6 padding_bottom_half text-center text-md-left">
                 <h2 class="darkcolor font-normal bottom30">About Us<span class="defaultcolor"></span></h2>
-                <p class="bottom35">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mauris arcu, lobortis id interdum vitae, interdum eget elit. Curabitur quis urna nulla. Suspendisse potenti. Duis suscipit ultrices maximus. </p>
-                <p class="bottom35">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mauris arcu, lobortis id interdum vitae, interdum eget elit. Curabitur quis urna nulla. Suspendisse potenti. Duis suscipit ultrices maximus.  </p>
+                <p class="bottom35"> {{about.about}} </p>
+                
             </div>
         </div>
         <div class="row  align-items-center">
             <div class="col-lg-6  col-md-6 padding_top_half text-center text-md-left">
                 <h2 class="darkcolor font-normal bottom30">Mision <span class="defaultcolor"></span> </h2>
-                <p class="bottom35">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mauris arcu, lobortis id interdum vitae, interdum eget elit. Curabitur quis urna nulla. Suspendisse potenti. Duis suscipit ultrices maximus. Curabitur quis urna nulla. Suspendisse potenti. Duis suscipit ultrices maximus. </p>
+                <p class="bottom35"> {{about.mision}} </p>
             </div>
             <div class="col-lg-6  col-md-6 padding_top_half text-center text-md-left">
                 <h2 class="darkcolor font-normal bottom30">Vision <span class="defaultcolor"></span> </h2>
-                <p class="bottom35">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mauris arcu, lobortis id interdum vitae, interdum eget elit. Curabitur quis urna nulla. Suspendisse potenti. Duis suscipit ultrices maximus. Curabitur quis urna nulla. Suspendisse potenti. Duis suscipit ultrices maximus. </p>
+                <p class="bottom35"> {{about.vision}} </p>
             </div>
         </div>
     </div>

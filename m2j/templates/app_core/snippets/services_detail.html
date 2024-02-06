@@ -1,0 +1,45 @@
+{% load static %}
+
+<!-- Gallery Details -->
+<section id="gallery-detail" class="padding_top padding_bottom_half">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="news_item shadow-equal">
+                    <div class="image">
+                        {% if servicio.image %}
+                            <img src="{{servicio.image.url}}" alt="Latest News" class="img-responsive">
+                        {% else %}
+                            <img alt="SEO" src="{% static 'app_core/construction/images/blogfull4.jpg' %}">
+                        {% endif %}
+                    </div>
+                    <div class="news_desc text-center text-md-left">
+                        <h3 class="text-capitalize font-normal darkcolor"><a href="javascript:;">{{servicio.title}}</a></h3>
+                        
+                        <p class="bottom35" style="padding-top: 35px;">{{servicio.description}}</p>
+                        
+                        <!-- EN ESTA PARTE VAN LOS SUBSERVICIOS -->
+                        {% for subservice in subservicios %}
+                            <div class="widget heading_space_half text-center text-md-left">
+                                <h3 class="darkcolor font-normal bottom30">{{subservice.title}}</h3>
+                                <p class="bottom30"> {{subservice.description}} </p>
+                                <div class="item" style="text-align: center;">
+                                    {% if subservice.image %}
+                                        <img src="{{subservice.image.url}}" alt="Latest News" class="img-responsive">
+                                    {% else %}
+                                        <img alt="SEO" src="{% static 'app_core/construction/images/service-1.jpg' %}">
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                            
+                        <blockquote class="blockquote darkcolor heading_space">{{servicio.description_finish}}</blockquote>
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+<!--Gallery Details Ends-->
