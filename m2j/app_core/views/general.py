@@ -3,6 +3,7 @@ from app_core.models import Contact, Banner, About, Skill, Counter, Service, Sub
 
 
 def index(request):
+  contact = Contact.objects.all().last()
   banner = Banner.objects.all().last()
   about = About.objects.all().last()
   skills = Skill.objects.all().last()
@@ -11,6 +12,7 @@ def index(request):
   testimonials = Testimonial.objects.all()
   partners = Partner.objects.all()
   context = {
+    'contact':contact,
     'banner':banner,
     'about':about,
     'skills':skills,

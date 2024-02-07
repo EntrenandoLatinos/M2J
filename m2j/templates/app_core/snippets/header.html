@@ -5,14 +5,18 @@
     <div class="top-header-area d-xs-none">
         <div class="container">
             <div class="row position-relative">
-                <div class="col-lg-9 col-md-8 col-sm-8 d-none d-sm-block position-relative pl-0" aria-hidden="true">
-                    <a href="tel:123-456-7891" class="font-14 whitecolor hover-default" title="Call"><i class="fas fa-mobile-alt mr-2"></i>0891-456-7891</a>
-                    <div class="bg-transparent d-inline-block d-xs-none position-relative mr-2 ml-2"></div>
-                    <a href="mailto:mj2@domain.com" class="font-14 whitecolor hover-default" title="Mail"><i class="far fa-envelope mr-2"></i>mj2@site.com</a>
+                <div class="col-lg-4 col-md-6 col-sm-6 d-none d-sm-block position-relative pl-0" aria-hidden="true">
+                    <!-- <a href="{% url 'account_login' %}" class="font-14 whitecolor hover-default" style="font-size: 30px;"><i class="fas fa-user mr-2"></i>Login</a> -->
+                    <a href="mailto:mj2@domain.com" class="font-14 whitecolor hover-default" title="Mail" style="font-size: 18px;"><i class="far fa-envelope mr-2"></i>m2jconstructionllc@gmail.com</a>
+                    <!-- <a href="tel:123-456-7891" class="font-14 whitecolor hover-default" title="Call"><i class="fas fa-mobile-alt mr-2"></i>0891-456-7891</a> -->
+                    <!-- <div class="bg-transparent d-inline-block d-xs-none position-relative mr-2 ml-2"></div>
+                    <a href="mailto:mj2@domain.com" class="font-14 whitecolor hover-default" title="Mail"><i class="far fa-envelope mr-2"></i>mj2@site.com</a> -->
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-4 text-right position-relative pr-0 d-flex d-sm-block justify-content-around">
-                    <a href="{% url 'account_login' %}" class="font-14 whitecolor hover-default"><i class="fas fa-user mr-2"></i>Login</a>
-                    <!-- <div class="bg-transparent d-inline-block d-xs-none position-relative mr-2 ml-2"></div> -->
+                <div class="col-lg-8 col-md-6 col-sm-6 text-right position-relative pr-0 d-flex d-sm-block justify-content-around">
+                    <a href="tel:{{contact.phone1}}" class="font-14 whitecolor hover-default" title="Call" style="font-size: 30px;"><i class="fas fa-mobile-alt mr-2"></i>{{contact.phone1}}</a>
+                    <!-- <a href="{% url 'account_login' %}" class="font-14 whitecolor hover-default"><i class="fas fa-user mr-2"></i>Login</a> -->
+                    <!-- <div class="bg-transparent d-inline-block d-xs-none position-relative mr-2 ml-2"></div>
+                    <a href="mailto:mj2@domain.com" class="font-14 whitecolor hover-default" title="Mail"><i class="far fa-envelope mr-2"></i>mj2@site.com</a> -->
                     <!-- <a href="construction/register.html" class="font-14 whitecolor hover-default"><i class="fas fa-lock mr-2"></i>Register</a> -->
                 </div>
             </div>
@@ -21,8 +25,8 @@
     <nav class="navbar navbar-expand-lg transparent-bg darkcolor static-nav">
         <div class="container bgdefault nav-cont">
             <a class="navbar-brand" href="{% url 'app_core:index' %}">
-                <img src="{% static 'app_core/construction/images/logo-gray.png' %}" alt="logo" class="logo-default">
-                <img src="{% static 'app_core/construction/images/logo-gray.png' %}" alt="logo" class="logo-scrolled">
+                <img src="{% static 'app_core/construction/images/logo.png' %}" alt="logo" class="logo-default">
+                <img src="{% static 'app_core/construction/images/logo.png' %}" alt="logo" class="logo-scrolled">
             </a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
@@ -63,6 +67,7 @@
         <div class="overlay"></div>
         <div class="inner-wrapper">
             <span class="btn-close" id="btn_sideNavClose"><i></i><i></i></span>
+            <img src="{% static 'app_core/construction/images/logo.png' %}" alt="logo" class="logo-default">
             <nav class="side-nav w-100">
                 <ul class="navbar-nav">
                     <li class="nav-item">

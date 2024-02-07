@@ -1926,7 +1926,7 @@ a.dropdown-toggle::after {
     position: fixed;
     right: 0;
     top: 0;
-    z-index: 1610;
+    z-index: 100000;
     height: 100vh;
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
@@ -3420,7 +3420,7 @@ iframe {
 }
 
 .overlay-customercolor {
-    background: #be131936;
+    background: #0000008c;
     z-index: 1;
     visibility: visible;
 }

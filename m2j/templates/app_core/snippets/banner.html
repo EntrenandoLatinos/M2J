@@ -16,7 +16,7 @@
                         <img src="{% static 'app_core/construction/images/banner-1.jpg' %}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
                     {% endif %}
                     <!-- LAYER NR. 1 -->
-                    <div class="tp-caption tp-resizeme"
+                    <!-- <div class="tp-caption tp-resizeme"
                          data-x="['left','center','center','center']" data-hoffset="['0','0','0','0']"
                          data-y="['middle','middle','middle','middle']" data-voffset="['-40','-40','-35','-35']"
                          data-width="none" data-height="none" data-type="text"
@@ -24,7 +24,7 @@
                          data-responsive_offset="on" data-start="1000"
                          data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
                         <h2 class="text-capitalize font-xlight whitecolor heading-title-small">{{banner.title}}</h2>
-                    </div>
+                    </div> -->
                     <!-- LAYER NR. 2 -->
                     <div class="tp-caption tp-resizeme"
                          data-x="['left','center','center','center']" data-hoffset="['0','0','0','0']"
@@ -33,10 +33,10 @@
                          data-textAlign="['center','center','center','center']"
                          data-responsive_offset="on" data-start="1000"
                          data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                        <h1 class="text-capitalize font-xlight defaultcolorblack">{{banner.subtitle}}</h1>
+                        <h1 class="text-capitalize font-xlight whitecolor" style="font-weight: bold;">{{banner.subtitle}}</h1>
                     </div>
                     <!-- LAYER NR. 3 -->
-                    <div class="tp-caption tp-resizeme"
+                    <!-- <div class="tp-caption tp-resizeme"
                          data-x="['left','center','center','center']" data-hoffset="['0','0','0','0']"
                          data-y="['middle','middle','middle','middle']" data-voffset="['95','95','90','90']"
                          data-width="none" data-height="none" data-type="text"
@@ -44,7 +44,7 @@
                          data-responsive_offset="on" data-start="1500"
                          data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
                         <p class="text-capitalize font-xlight whitecolor">{{banner.description}}</p>
-                    </div>
+                    </div> -->
                     <!-- LAYER NR. 4 -->
                     <div class="tp-caption tp-resizeme"
                          data-x="['left','center','center','center']" data-hoffset="['0','0','0','0']"
@@ -53,7 +53,7 @@
                          data-textAlign="['center','center','center','center']"
                          data-responsive_offset="on" data-start="2000"
                          data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":2000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
-                        <button class="btn button btn-white transition-3">Learn More</button>
+                        <a href="#our-services" class="btn button btn-white transition-3 pagescroll">Learn More</a>
                     </div>
                 </li>
             </ul>
