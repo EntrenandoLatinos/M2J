@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app_core.models import Contact, Banner, About, Skill, Counter, Service, SubService, ServiceImage, Testimonial, Partner, Faq, Privacy
+from app_core.models import Contact, Banner, About, Skill, Counter, Service, SubService, WorkImage, Testimonial, Partner, Faq, Privacy
 
 # Register your models here.
 
@@ -10,7 +10,7 @@ admin.site.register(Skill)
 admin.site.register(Counter)
 admin.site.register(Service)
 admin.site.register(SubService)
-admin.site.register(ServiceImage)
+admin.site.register(WorkImage)
 admin.site.register(Testimonial)
 admin.site.register(Partner)
 admin.site.register(Faq)

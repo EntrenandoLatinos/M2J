@@ -7,7 +7,7 @@
             <div class="row position-relative">
                 <div class="col-lg-4 col-md-6 col-sm-6 d-none d-sm-block position-relative pl-0" aria-hidden="true">
                     <!-- <a href="{% url 'account_login' %}" class="font-14 whitecolor hover-default" style="font-size: 30px;"><i class="fas fa-user mr-2"></i>Login</a> -->
-                    <a href="mailto:mj2@domain.com" class="font-14 whitecolor hover-default" title="Mail" style="font-size: 18px;"><i class="far fa-envelope mr-2"></i>m2jconstructionllc@gmail.com</a>
+                    <a href="mailto:mj2@domain.com" class="font-14 whitecolor hover-default" title="Mail" style="font-size: 18px;"><i class="far fa-envelope mr-2"></i>{{contact.email}}</a>
                     <!-- <a href="tel:123-456-7891" class="font-14 whitecolor hover-default" title="Call"><i class="fas fa-mobile-alt mr-2"></i>0891-456-7891</a> -->
                     <!-- <div class="bg-transparent d-inline-block d-xs-none position-relative mr-2 ml-2"></div>
                     <a href="mailto:mj2@domain.com" class="font-14 whitecolor hover-default" title="Mail"><i class="far fa-envelope mr-2"></i>mj2@site.com</a> -->
@@ -23,10 +23,10 @@
         </div>
     </div>
     <nav class="navbar navbar-expand-lg transparent-bg darkcolor static-nav">
-        <div class="container bgdefault nav-cont">
+        <div class="container bgcustomerprimary nav-cont">
             <a class="navbar-brand" href="{% url 'app_core:index' %}">
-                <img src="{% static 'app_core/construction/images/logo.png' %}" alt="logo" class="logo-default">
-                <img src="{% static 'app_core/construction/images/logo.png' %}" alt="logo" class="logo-scrolled">
+                <img src="{% static 'app_core/construction/images/logo_white.png' %}" alt="logo" class="logo-default">
+                <img src="{% static 'app_core/construction/images/logo_white.png' %}" alt="logo" class="logo-scrolled">
             </a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
@@ -43,6 +43,9 @@
                                 <a class="dropdown-item" href="{% url 'app_core:services_view' service.id %}">{{service.title}}</a>
                             {% endfor %}
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'app_core:works' %}"> Works </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'app_core:faq' %}"> Faq's </a>
@@ -89,6 +92,9 @@
                                 {% endfor %}
                             </ul>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'app_core:works' %}"> Works </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'app_core:faq' %}"> Faq's </a>

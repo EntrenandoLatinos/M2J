@@ -1,4 +1,19 @@
 from django.db import models
+from PIL import Image
+from django.dispatch import receiver
+from django.db.models.signals import pre_delete
+import os
+
+# Opciones para el campo de selección
+CATEGORY_CHOICES = [
+    ('01', 'Roofing'),
+    ('02', 'Flat Roofing'),
+    ('04', 'Siding'),
+    ('05', 'Gutter'),
+    ('06', 'Window'),
+    ('07', 'Carpentry'),
+    ('08', 'Remodeling'),
+]
 
 # Create your models here.
 class AuditoriaFecha(models.Model):
@@ -24,9 +39,9 @@ class Contact(AuditoriaFecha):
 
 class Banner(AuditoriaFecha):
     image = models.ImageField(upload_to='banner/', null=True, blank=True)
-    title = models.CharField("Banner title", max_length=60, null=True, blank=True)
-    subtitle = models.CharField("Banner subtitle", max_length=60, null=True, blank=True)
-    description = models.TextField("Description", null=True, blank=True)
+    title = models.CharField("Banner title", max_length=30, null=True, blank=True)
+    subtitle = models.CharField("Banner subtitle", max_length=30, null=True, blank=True)
+    description = models.TextField("Description", max_length=73, null=True, blank=True)
     
     class Meta:
         ordering = ['id']
@@ -110,17 +125,33 @@ class SubService(AuditoriaFecha):
     def __str__(self):
         return "{0}".format(str(self.title))
     
-class ServiceImage(AuditoriaFecha):
-    service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='service_serviceimage')
-    image = models.ImageField(upload_to='service_images/')
-
-    class Meta:
-        ordering = ['id']
-        verbose_name = 'ServiceImage'
-        verbose_name_plural = 'ServiceImages'
+class WorkImage(AuditoriaFecha):
+    category = models.CharField("Category", null=True, blank=True, max_length=2, choices=CATEGORY_CHOICES)
+    title = models.CharField("Image title", max_length=60, null=True, blank=True)
+    description = models.TextField("Description", null=True, blank=True)
+    image = models.ImageField(upload_to='work_image/')
 
     def __str__(self):
-        return "{0}".format(str(self.service.nombre))
+        return "{0}".format(str(self.title))
+    
+    def save(self, *args, **kwargs):
+        if not self._state.adding:
+            super().save(*args, **kwargs)
+            return
+        super().save(*args, **kwargs)
+        img = Image.open(self.image.path)
+        img.save(self.image.path, quality=50)
+                 
+    class Meta:
+        ordering = ['id']
+        verbose_name = 'WorkImage'
+        verbose_name_plural = 'WorkImages'
+
+@receiver(pre_delete, sender=WorkImage)
+def delete_gallery_image(sender, instance, **kwargs):
+    file_path = instance.image.path
+    if os.path.exists(file_path):
+        os.remove(file_path)
     
 class Testimonial(AuditoriaFecha):
     image = models.ImageField(upload_to='testimonial/', null=True, blank=True)

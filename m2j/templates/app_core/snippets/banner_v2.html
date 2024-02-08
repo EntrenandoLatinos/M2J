@@ -1,25 +1,20 @@
 {% load static %}
 
 <!--Main Slider-->
-<section id="main-banner-area" class="position-relative section-nav-smooth">
-    <div id="revo_main_wrapper" class="rev_slider_wrapper fullwidthbanner-container m-0 p-0 bg-dark" data-alias="classic4export" data-source="gallery">
-        <!-- START REVOLUTION SLIDER 5.4.1 fullwidth mode -->
-        <div id="vertical-bullets" class="rev_slider fullwidthabanner white vertical-tpb" data-version="5.4.1">
+<section id="home" class="p-0 single-slide light-slider">
+    <h2 class="d-none">hidden</h2>
+    <div id="rev_single_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="trax_slider_01">
+        <!-- START REVOLUTION SLIDER 5.4.8.1 fullscreen mode -->
+        <div id="rev_single" class="rev_slider fullwidthabanner" data-version="5.4.8.1">
             <ul>
                 <!-- SLIDE  -->
                 <li data-index="rs-3" data-transition="crossfade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="images/slide-img2.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
                     <!-- MAIN IMAGE -->
-                    <!-- <img src="video/thumb.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina> -->
-                    <div class="overlay overlay-customercolor opacity-10"></div>
-                    {% if banner.image %}
-                        <img src="{{ banner.image.url }}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
-                    {% else %}
-                        <img src="{% static 'app_core/construction/images/banner-1.jpg' %}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
-                    {% endif %}
+                    <img src="video/thumb.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
                     <!-- LAYERS -->
                     <!-- Overlay -->
-                    <div class="overlay overlay-customercolor opacity-10"></div>
-                    <!-- <div class="rs-background-video-layer"
+                    <div class="overlay overlay-blue opacity-10"></div>
+                    <div class="rs-background-video-layer"
                          data-forcerewind="on"
                          data-volume="mute"
                          data-videowidth="100%"
@@ -30,7 +25,7 @@
                          data-forceCover="1"
                          data-aspectratio="16:9"
                          data-autoplay="true"
-                         data-autoplayonlyfirsttime="false"></div> -->
+                         data-autoplayonlyfirsttime="false"></div>
                     <div class="tp-caption tp-resizeme"
                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                          data-y="['middle','middle','middle','middle']" data-voffset="['-55','-30','-30','-20']"
@@ -41,7 +36,7 @@
                          data-transform_in="x:-50px;opacity:0;s:2000;e:Power3.easeOut;"
                          data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
                          data-start="1000" data-splitin="none" data-splitout="none">
-                        <h2 class="font-xlight whitecolor">{{banner.title}}</h2>
+                        <h2 class="font-xlight">The Unique</h2>
                     </div>
                     <div class="tp-caption tp-resizeme"
                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
@@ -53,7 +48,7 @@
                          data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
                          data-transform_out="s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
                          data-start="900" data-splitin="none" data-splitout="none">
-                        <h2 class="whitecolor">{{banner.subtitle}}</h2>
+                        <h2>Construction Agency</h2>
                     </div>
                     <div class="tp-caption tp-resizeme"
                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
@@ -66,29 +61,21 @@
                          data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
                          data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
                          data-start="1600" data-splitin="none" data-splitout="none">
-                        <p class="font-light text-capitalize whitecolor">{{banner.description}}</p>
+                        <p class="font-light text-capitalize">A versatile multipurpose Html Template.</p>
                     </div>
                     <div class="tp-caption tp-resizeme"
                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                          data-y="['middle','middle','middle','middle']" data-voffset="['170','180','200','200']"
                          data-width="['500','500','500','500']" data-textalign="['center','center','center','center']" data-type="text"
                          data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1500;e:Power4.easeInOut;" data-transform_out="s:900;e:Power2.easeInOut;s:900;e:Power2.easeInOut;" data-start="1800" data-splitin="none" data-splitout="none" data-responsive_offset="on">
-                        <a id="whatsapp_banner_web" class="button transition-3 btn-whatsapp font-13 button-padding" target="_blank" href="https://web.whatsapp.com/send?l=es&phone=15026927021&text=https://www.ideafix.com/ " rel="noopener noreferrer">
-                            <i class="whatsapp-icon"></i> Whatsapp 
-                        </a>
-                        <a id="whatsapp_banner_movil" class="button transition-3 btn-whatsapp font-13 button-padding" target="_blank" href="https://api.whatsapp.com/send?l=es&phone=15026927021&text=https://www.ideafix.com.co/ " rel="noopener noreferrer">
-                            <i class="whatsapp-icon"></i> Whatsapp 
-                        </a>
+                        <a class="button transition-3 btn-yellow font-13 button-padding" href="javascript:void(0)">Learn More</a>
                     </div>
                 </li>
             </ul>
         </div>
+        <!-- END REVOLUTION SLIDER -->
     </div>
-    <ul class="social-icons social-icons-simple revicon white">
-        <li class="d-table"><a href="javascript:void(0)" class="facebook"><i class="fab fa-facebook-f"></i></a> </li>
-        <li class="d-table"><a href="javascript:void(0)" class="twitter"><i class="fab fa-twitter"></i> </a> </li>
-        <li class="d-table"><a href="javascript:void(0)" class="linkedin"><i class="fab fa-linkedin-in"></i> </a> </li>
-        <li class="d-table"><a href="javascript:void(0)" class="insta"><i class="fab fa-instagram"></i> </a> </li>
-    </ul>
+    <!--scroll down-->
+    <a href="#about" class="scroll-down pagescroll scrollupto whitecolor hover-default">Scroll Down <i class="fas fa-long-arrow-alt-down"></i></a>
 </section>
 <!--Main Slider ends -->

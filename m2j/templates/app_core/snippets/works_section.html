@@ -1,0 +1,54 @@
+{% load static %}
+
+<!-- Gallery -->
+<section id="gallery" class="bglight position-relative padding" style="padding-bottom: 60px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center wow fadeIn top15" data-wow-delay="300ms">
+                <h2 class="heading bottom45 defaultcolorblack font-light2">Our <span class="font-weight-bold">Work</span>
+                    <span class="divider-center"></span>
+                </h2>
+                <div class="col-md-6 offset-md-3 bottom40">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolores quam reiciendis voluptatum.</p>
+                </div>
+            </div>
+            <!-- <div class="col-lg-12">
+                <div id="mosaic-filter" class="cbp-l-filters bottom30 wow fadeIn text-center" data-wow-delay="350ms">
+                    <div data-filter="*" class="cbp-filter-item">
+                        <span>All</span>
+                    </div>
+                    <div data-filter=".digital" class="cbp-filter-item">
+                        <span>Digital</span>
+                    </div>
+                    <div data-filter=".design" class="cbp-filter-item">
+                        <span>Design</span>
+                    </div>
+                    <div data-filter=".brand" class="cbp-filter-item">
+                        <span>Brand</span>
+                    </div>
+                    <div data-filter=".graphics" class="cbp-filter-item">
+                        <span>Graphics</span>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-lg-12">
+                <div id="grid-mosaic" class="cbp cbp-l-grid-mosaic-flat">
+                    {% for image in gallery %}
+                        <div class="cbp-item {{image.category}}">
+                            <img src="{{image.image.url}}" alt="">
+                            <div class="gallery-hvr whitecolor">
+                                <div class="center-box">
+                                    <a href="{{image.image.url}}" class="opens" data-fancybox="gallery" title="Zoom In"> <i class="fa fa-search-plus"></i></a>
+                                    <!-- <a href="work-detail.html" class="opens" title="View Details"> <i class="fas fa-link"></i></a> -->
+                                    <!-- <h4 class="w-100">Construction Work</h4> -->
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-12 text-center" style="padding-top: 60px;"><a href="{% url 'app_core:works' %}" class="button btn btn-red">See More</a></div>
+        </div>
+    </div>
+</section>
+<!-- Gallery ends -->

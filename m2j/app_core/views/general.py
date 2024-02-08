@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from app_core.models import Contact, Banner, About, Skill, Counter, Service, SubService, Testimonial, Partner, Faq, Privacy
+from app_core.models import Contact, Banner, About, Skill, Counter, Service, SubService, WorkImage, Testimonial, Partner, Faq, Privacy
 
 
 def index(request):
@@ -9,6 +9,7 @@ def index(request):
   skills = Skill.objects.all().last()
   indicators = Counter.objects.all().last()
   servicios = Service.objects.all()
+  gallery = WorkImage.objects.all().order_by('?')[:6]
   testimonials = Testimonial.objects.all()
   partners = Partner.objects.all()
   context = {
@@ -18,6 +19,7 @@ def index(request):
     'skills':skills,
     'indicators':indicators,
     'servicios':servicios,
+    'gallery':gallery,
     'testimonials':testimonials,
     'partners':partners,
     }
@@ -41,6 +43,15 @@ def services_view(request, pk):
   subservicios = SubService.objects.filter(service=pk)
   context = {'servicio':servicio, 'servicios':servicios, 'subservicios':subservicios}
   return render(request, 'app_core/pages/service.html', context)
+
+def works(request):
+  servicios = Service.objects.all()
+  gallery = WorkImage.objects.all().order_by('?')
+  context = {
+    'servicios':servicios,
+    'gallery':gallery,
+  }
+  return render(request, 'app_core/pages/works.html', context)
 
 def faq(request):
   faqs = Faq.objects.all()
