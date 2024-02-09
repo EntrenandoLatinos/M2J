@@ -1,8 +1,9 @@
+import os
 from django.db import models
 from PIL import Image
 from django.dispatch import receiver
 from django.db.models.signals import pre_delete
-import os
+from ckeditor.fields import RichTextField
 
 # Opciones para el campo de selección
 CATEGORY_CHOICES = [
@@ -13,6 +14,15 @@ CATEGORY_CHOICES = [
     ('06', 'Window'),
     ('07', 'Carpentry'),
     ('08', 'Remodeling'),
+]
+
+SOCIAL_MEDIA_CHOICES = [
+    ('01', 'Facebook'),
+    ('02', 'Twitter'),
+    ('03', 'Instagram'),
+    ('04', 'TikTok'),
+    ('05', 'YouTube'),
+    ('06', 'LinkedIn'),
 ]
 
 # Create your models here.
@@ -28,42 +38,42 @@ class Contact(AuditoriaFecha):
     phone1 = models.CharField("Phone 2", max_length=60, null=True, blank=True)
     phone2 = models.CharField("Phone 1", max_length=60, null=True, blank=True)
     email = models.EmailField("Email", null=True, blank=True)
+
+    def __str__(self):
+        return "{0}".format(str(self.email))
     
     class Meta:
         ordering = ['id']
         verbose_name = 'Contact'
         verbose_name_plural = 'Contacts'
 
-    def __str__(self):
-        return "{0}".format(str(self.email))
-
 class Banner(AuditoriaFecha):
     image = models.ImageField(upload_to='banner/', null=True, blank=True)
     title = models.CharField("Banner title", max_length=30, null=True, blank=True)
     subtitle = models.CharField("Banner subtitle", max_length=30, null=True, blank=True)
     description = models.TextField("Description", max_length=73, null=True, blank=True)
+
+    def __str__(self):
+        return "{0}".format(str(self.title))
     
     class Meta:
         ordering = ['id']
         verbose_name = 'Banner'
         verbose_name_plural = 'Banners'
-
-    def __str__(self):
-        return "{0}".format(str(self.title))
     
 class About(AuditoriaFecha):
     image = models.ImageField(upload_to='about/', null=True, blank=True)
-    about = models.TextField("About", null=True, blank=True)
-    mision = models.TextField("Mision", null=True, blank=True)
-    vision = models.TextField("Vision", null=True, blank=True)
+    about = RichTextField("About", null=True, blank=True)
+    mision = RichTextField("Mission", null=True, blank=True)
+    vision = RichTextField("Vision", null=True, blank=True)
+
+    def __str__(self):
+        return "{0}".format(str(self.id))
     
     class Meta:
         ordering = ['id']
         verbose_name = 'About'
         verbose_name_plural = 'Abouts'
-
-    def __str__(self):
-        return "{0}".format(str(self.id))
     
 class Skill(AuditoriaFecha):
     title1 = models.CharField("Skill title 1", max_length=60, null=True, blank=True)
@@ -72,14 +82,14 @@ class Skill(AuditoriaFecha):
     description2 = models.TextField("Description 2", null=True, blank=True)
     title3 = models.CharField("Skill title 3", max_length=60, null=True, blank=True)
     description3 = models.TextField("Description 3", null=True, blank=True)
+
+    def __str__(self):
+        return "{0}".format(str(self.title1))
     
     class Meta:
         ordering = ['id']
         verbose_name = 'Skill'
         verbose_name_plural = 'Skills'
-
-    def __str__(self):
-        return "{0}".format(str(self.title1))
     
 class Counter(AuditoriaFecha):
     title1 = models.CharField("Title 1", max_length=60, null=True, blank=True)
@@ -88,42 +98,42 @@ class Counter(AuditoriaFecha):
     number2 = models.IntegerField("Number 2", null=True, blank=True)
     title3 = models.CharField("Title 3", max_length=60, null=True, blank=True)
     number3 = models.IntegerField("Number 3", null=True, blank=True)
+
+    def __str__(self):
+        return "{0}".format(str(self.title1))
     
     class Meta:
         ordering = ['id']
         verbose_name = 'Counter'
         verbose_name_plural = 'Counters'
 
-    def __str__(self):
-        return "{0}".format(str(self.title1))
-
 class Service(AuditoriaFecha):
     image = models.ImageField(upload_to='service/', null=True, blank=True)
     title = models.CharField("Service Name", max_length=60, null=True, blank=True)
-    description = models.TextField("Description", null=True, blank=True)
+    description = RichTextField("Description", null=True, blank=True)
     description_finish = models.TextField("Finish Description", null=True, blank=True)
 
+    def __str__(self):
+        return "{0}".format(str(self.title))
+    
     class Meta:
         ordering = ['id']
         verbose_name = 'Service'
         verbose_name_plural = 'Services'
-
-    def __str__(self):
-        return "{0}".format(str(self.title))
     
 class SubService(AuditoriaFecha):
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='service_subservice')
     image = models.ImageField(upload_to='subservice/', null=True, blank=True)
     title = models.CharField("Subservice Name", max_length=60, null=True, blank=True)
-    description = models.TextField("Description", null=True, blank=True)
+    description = RichTextField("Description", null=True, blank=True)
 
+    def __str__(self):
+        return "{0}".format(str(self.title))
+    
     class Meta:
         ordering = ['id']
         verbose_name = 'SubService'
         verbose_name_plural = 'SubServices'
-
-    def __str__(self):
-        return "{0}".format(str(self.title))
     
 class WorkImage(AuditoriaFecha):
     category = models.CharField("Category", null=True, blank=True, max_length=2, choices=CATEGORY_CHOICES)
@@ -158,46 +168,60 @@ class Testimonial(AuditoriaFecha):
     name = models.CharField("Name", max_length=60, null=True, blank=True)
     location = models.CharField("Location", max_length=60, null=True, blank=True)
     description = models.TextField("Description", null=True, blank=True)
+
+    def __str__(self):
+        return "{0}".format(str(self.name))
     
     class Meta:
         ordering = ['id']
         verbose_name = 'Testimonial'
         verbose_name_plural = 'Testimonials'
-
-    def __str__(self):
-        return "{0}".format(str(self.name))
     
 class Partner(AuditoriaFecha):
     image = models.ImageField(upload_to='partner/', null=True, blank=True)
+
+    def __str__(self):
+        return "{0}".format(str(self.id))
     
     class Meta:
         ordering = ['id']
         verbose_name = 'Partner'
         verbose_name_plural = 'Partners'
-
-    def __str__(self):
-        return "{0}".format(str(self.id))
     
 class Faq(AuditoriaFecha):
     title = models.CharField("Title", max_length=60, null=True, blank=True)
-    description = models.TextField("Description", null=True, blank=True)
+    description = RichTextField("Description", null=True, blank=True)
 
+    def __str__(self):
+        return "{0}".format(str(self.title))
+    
     class Meta:
         ordering = ['id']
         verbose_name = 'Faq'
         verbose_name_plural = 'Faqs'
+    
+class Privacy(AuditoriaFecha):
+    title = models.CharField("Title", max_length=60, null=True, blank=True)
+    description = RichTextField("Description", null=True, blank=True)
 
     def __str__(self):
         return "{0}".format(str(self.title))
     
-class Privacy(AuditoriaFecha):
-    title = models.CharField("Title", max_length=60, null=True, blank=True)
-    description = models.TextField("Description", null=True, blank=True)
-
     class Meta:
         ordering = ['id']
         verbose_name = 'Privacy'
         verbose_name_plural = 'Privacies'
+    
+class SocialMedia(AuditoriaFecha):
+    name = models.CharField("Name", max_length=2, choices=SOCIAL_MEDIA_CHOICES)
+    url = models.URLField("URL")
+    link_class = models.CharField("a href class", max_length=50)
+    icon_class = models.CharField("Icon class", max_length=50)
 
     def __str__(self):
-        return "{0}".format(str(self.title))
+        return "{0}".format(str(self.get_name_display()))
+    
+    class Meta:
+        ordering = ['id']
+        verbose_name = 'SocialMedia'
+        verbose_name_plural = 'SocialMedias'

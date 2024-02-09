@@ -119,4 +119,29 @@ urlpatterns = [
         administrator.privacy_update,
         name='privacy_update'
     ),
+    path(
+        'administrator/works/',
+        administrator.works,
+        name='works'
+    ),
+    path(
+        'administrator/work_create/',
+        administrator.work_create,
+        name='work_create'
+    ),
+    path(
+        'administrator/social_media/',
+        administrator.social_media,
+        name='social_media'
+    ),
+    path(
+        'administrator/social_media_create/',
+        administrator.social_media_create,
+        name='social_media_create'
+    ),
+    path(
+        'administrator/social_media_update/<int:pk>/',
+        administrator.social_media_update,
+        name='social_media_update'
+    ),
 ]

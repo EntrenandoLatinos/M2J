@@ -30,7 +30,7 @@
                         {% for faq in faqs %}
                             <tr>
                                 <td>{{faq.title}}</td>
-                                <td>{{faq.description}}</td>
+                                <td>{{faq.description|truncatechars_html:45|safe}}</td>
                                 <td>
                                     <a class="btn btn-success" href="{% url 'app_user:faq_update' faq.id %}">Update</a>
                                     <button class="btn btn-danger" data-toggle="modal" data-target="#deleteFaq{{ forloop.counter }}">Delete</button>

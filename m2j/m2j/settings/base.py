@@ -26,7 +26,7 @@ THIRD_APSS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'crispy_forms',
+    'ckeditor',
 ]
 
 LOCAL_APPS = [
@@ -46,6 +46,34 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "allauth.account.middleware.AccountMiddleware",
 ]
+
+CKEDITOR_CONFIGS = {
+    'comment_ckeditor': {
+        'toolbar': 'custom',
+        'toolbar_custom': [
+            ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'],
+            ["TextColor", "BGColor", 'RemoveFormat'],
+            ['NumberedList', 'BulletedList'],
+            ['Link', 'Unlink'],
+            ["Smiley", "SpecialChar", 'Blockquote'],
+        ],
+        'extraPlugins': 'codesnippet',
+        'width': 'auto',
+        'height': '180',
+        'tabSpaces': 4,
+        'removePlugins': 'elementspath',
+        'resize_enabled': False,
+    },
+
+    'default': {
+        'skin': 'office2013',
+        'toolbar': 'full',
+        'height': 420,
+        'width': 'auto',
+        'extraPlugins': 'codesnippet',
+        "versionCheck": False,
+    },
+}
 
 ROOT_URLCONF = 'm2j.urls'
 
@@ -101,5 +129,3 @@ LOGIN_URL = 'account_login'
 LOGIN_REDIRECT_URL = 'app_user:login-redirect'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'

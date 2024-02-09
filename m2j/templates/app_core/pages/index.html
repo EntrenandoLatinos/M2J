@@ -4,6 +4,22 @@
 
 {% block head_title %}{{ block.super }} Home{% endblock head_title %}
 
+{% block extra_styles %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
+<!-- <style>
+    .fa-tiktok {
+        color: #be1319;
+
+        filter: drop-shadow(2px 0px 0px #FD3E3E) drop-shadow(-2px -2px 0px #4DE8F4);
+    }
+    .fa-tiktok:hover {
+        color: white;
+    }
+</style> -->
+{% endblock extra_styles %}
+
 {% block content %}
 
 <!-- start Header -->
@@ -17,6 +33,10 @@
 <!-- start About -->
     {% include 'app_core/snippets/about.html' %}
 <!-- end About -->
+
+<!-- start Social Media -->
+{% include 'app_core/snippets/social_media.html' %}
+<!-- end Social Media -->
 
 <!-- start Services -->
     {% include 'app_core/snippets/services.html' %}

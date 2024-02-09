@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
-from app_core.forms import ContactForm, BannerForm, AboutForm, SkillForm, CounterForm, ServiceForm, ServiceDeleteForm, SubServiceForm, TestimonialForm, TestimonialDeleteForm, PartnerForm, FaqForm, PrivacyForm
-from app_core.models import Contact, Banner, About, Skill, Counter, Service, SubService, Testimonial, Partner, Faq, Privacy
+from app_core.forms import ContactForm, BannerForm, AboutForm, SkillForm, CounterForm, ServiceForm, ServiceDeleteForm, SubServiceForm, TestimonialForm, TestimonialDeleteForm, PartnerForm, FaqForm, PrivacyForm, WorkForm, SocialMediaForm
+from app_core.models import Contact, Banner, About, Skill, Counter, Service, SubService, WorkImage, Testimonial, Partner, Faq, Privacy, SocialMedia
 
 def login_redirect(request):
     if request.user.is_superuser:
@@ -326,3 +326,111 @@ def privacy_update(request):
 
     context = {'privacy':privacy, 'privacy_form':privacy_form}
     return render(request, 'app_user/pages/privacy.html', context)
+
+############### WORKS ###############
+@login_required
+def works(request):
+    works = WorkImage.objects.all()
+
+    if request.method == 'POST':
+        work_id = request.POST.get('deleteWorkInput', '')
+        WorkImage.objects.filter(pk=work_id).delete()
+
+    context = {'works':works}
+    return render(request, 'app_user/pages/works.html', context)
+
+@login_required
+def work_create(request):
+    if request.method == 'POST':
+        work_form = WorkForm(request.POST, request.FILES)
+        if work_form.is_valid():
+            new_work = work_form.save()
+            return redirect('app_user:works')
+    else:
+        work_form = WorkForm()
+
+    return render(request, 'app_user/pages/work_create.html', {'work_form': work_form})
+
+############### SOCIAL MEDIA ###############
+@login_required
+def social_media(request):
+    social_media = SocialMedia.objects.all()
+
+    if request.method == 'POST':
+        social_media_id = request.POST.get('deleteSocialMediaInput', '')
+        SocialMedia.objects.filter(pk=social_media_id).delete()
+
+    context = {'social_media':social_media}
+    return render(request, 'app_user/pages/social_media.html', context)
+
+@login_required
+def social_media_create(request):
+    if request.method == 'POST':
+        social_media_form = SocialMediaForm(request.POST, request.FILES)
+        if social_media_form.is_valid():
+
+            social_name = social_media_form.cleaned_data.get('name')
+            print(f"Esta es la red social: {social_name}")
+            if social_name == '01':
+                social_media_form.instance.link_class = "facebook"
+                social_media_form.instance.icon_class = "fab fa-facebook-f"
+            elif social_name == '02':
+                social_media_form.instance.link_class = "twitter"
+                social_media_form.instance.icon_class = "fab fa-twitter"
+            elif social_name == '03':
+                social_media_form.instance.link_class = "insta"
+                social_media_form.instance.icon_class = "fab fa-instagram"
+            elif social_name == '04':
+                social_media_form.instance.link_class = "tiktok"
+                social_media_form.instance.icon_class = "fab fa-tiktok"
+            elif social_name == '05':
+                social_media_form.instance.link_class = "youtube"
+                social_media_form.instance.icon_class = "fab fa-youtube"
+            elif social_name == '06':
+                social_media_form.instance.link_class = "linkedin"
+                social_media_form.instance.icon_class = "fab fa-linkedin-in"
+
+            new_social_media = social_media_form.save()
+            return redirect('app_user:social_media')
+    else:
+        social_media_form = SocialMediaForm()
+
+    return render(request, 'app_user/pages/social_media_create.html', {'social_media_form': social_media_form})
+
+@login_required
+def social_media_update(request, pk):
+    social_media = get_object_or_404(SocialMedia, id=pk)
+
+    if request.method == 'POST':
+        social_media_form = SocialMediaForm(request.POST, request.FILES, instance=social_media)
+        if social_media_form.is_valid():
+
+            social_name = social_media_form.cleaned_data.get('name')
+            print(f"Esta es la red social: {social_name}")
+            if social_name == '01':
+                social_media_form.instance.link_class = "facebook"
+                social_media_form.instance.icon_class = "fab fa-facebook-f"
+            elif social_name == '02':
+                social_media_form.instance.link_class = "twitter"
+                social_media_form.instance.icon_class = "fab fa-twitter"
+            elif social_name == '03':
+                social_media_form.instance.link_class = "insta"
+                social_media_form.instance.icon_class = "fab fa-instagram"
+            elif social_name == '04':
+                social_media_form.instance.link_class = "tiktok"
+                social_media_form.instance.icon_class = "fab fa-tiktok"
+            elif social_name == '05':
+                social_media_form.instance.link_class = "youtube"
+                social_media_form.instance.icon_class = "fab fa-youtube"
+            elif social_name == '06':
+                social_media_form.instance.link_class = "linkedin"
+                social_media_form.instance.icon_class = "fab fa-linkedin-in"
+
+            social_media_form.save()
+            return redirect('app_user:social_media')
+        
+    else:
+        social_media_form = SocialMediaForm(instance=social_media)
+
+    context = {'social_media':social_media, 'social_media_form':social_media_form}
+    return render(request, 'app_user/pages/social_media_update.html', context)

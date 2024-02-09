@@ -4,10 +4,11 @@ cffi==1.16.0
 charset-normalizer==3.3.2
 cryptography==42.0.2
 defusedxml==0.7.1
-Django==5.0.1
-django-allauth==0.60.1
-django-crispy-forms==2.1
+Django==3.2.13
+django-allauth==0.61.1
+django-ckeditor==6.7.1
 django-debug-toolbar==4.3.0
+django-js-asset==2.2.0
 idna==3.6
 oauthlib==3.2.2
 pillow==10.2.0

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from app_core.models import Contact, Banner, About, Skill, Counter, Service, SubService, WorkImage, Testimonial, Partner, Faq, Privacy
+from app_core.models import Contact, Banner, About, Skill, Counter, Service, SubService, WorkImage, Testimonial, Partner, Faq, Privacy, SocialMedia
 
 
 def index(request):
@@ -12,6 +12,7 @@ def index(request):
   gallery = WorkImage.objects.all().order_by('?')[:6]
   testimonials = Testimonial.objects.all()
   partners = Partner.objects.all()
+  social_media = SocialMedia.objects.all()
   context = {
     'contact':contact,
     'banner':banner,
@@ -22,6 +23,7 @@ def index(request):
     'gallery':gallery,
     'testimonials':testimonials,
     'partners':partners,
+    'social_media':social_media,
     }
   return render(request, 'app_core/pages/index.html', context)
 

@@ -1,5 +1,14 @@
 from django import forms
-from app_core.models import Contact, Banner, About, Skill, Counter, Service, SubService, Testimonial, Partner, Faq, Privacy
+from app_core.models import Contact, Banner, About, Skill, Counter, Service, SubService, Testimonial, Partner, Faq, Privacy, WorkImage, SocialMedia
+
+SOCIAL_MEDIA_CHOICES = [
+    ('01', 'Facebook'),
+    ('02', 'Twitter'),
+    ('03', 'Instagram'),
+    ('04', 'TikTok'),
+    ('05', 'YouTube'),
+    ('06', 'LinkedIn'),
+]
 
 class ContactForm(forms.ModelForm):
     class Meta:
@@ -26,11 +35,6 @@ class AboutForm(forms.ModelForm):
     class Meta:
         model = About
         fields = ['image', 'about', 'mision', 'vision']
-        widgets = {
-            'about': forms.Textarea(attrs={'class': 'resizable_textarea form-control'}),
-            'mision': forms.Textarea(attrs={'class': 'resizable_textarea form-control'}),
-            'vision': forms.Textarea(attrs={'class': 'resizable_textarea form-control'}),
-        }
 
 class SkillForm(forms.ModelForm):
     class Meta:
@@ -64,7 +68,6 @@ class ServiceForm(forms.ModelForm):
         fields = ['image', 'title', 'description', 'description_finish']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'resizable_textarea form-control'}),
             'description_finish': forms.Textarea(attrs={'class': 'resizable_textarea form-control'}),
         }
 
@@ -77,7 +80,6 @@ class SubServiceForm(forms.ModelForm):
         fields = ['service', 'image', 'title', 'description']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'resizable_textarea form-control'}),
         }
 
 class TestimonialForm(forms.ModelForm):
@@ -104,7 +106,6 @@ class FaqForm(forms.ModelForm):
         fields = ['title', 'description']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'resizable_textarea form-control'}),
         }
 
 class PrivacyForm(forms.ModelForm):
@@ -113,5 +114,19 @@ class PrivacyForm(forms.ModelForm):
         fields = ['title', 'description']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'resizable_textarea form-control'}),
+        }
+
+class WorkForm(forms.ModelForm):
+    class Meta:
+        model = WorkImage
+        fields = ['image']
+
+class SocialMediaForm(forms.ModelForm):
+    name = forms.ChoiceField(choices=SOCIAL_MEDIA_CHOICES, label='Name', required=True)
+    class Meta:
+        model = SocialMedia
+        fields = ['name', 'url']
+        widgets = {
+            'name': forms.Select(attrs={'class': 'form-control'}),
+            'url': forms.TextInput(attrs={'class': 'fom-rcontrol', 'type': 'url'}),
         }

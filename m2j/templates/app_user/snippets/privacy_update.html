@@ -33,6 +33,7 @@
                     <br />
                     <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
+                        {{ privacy_form.media }}
 
                         <div class="item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="title">Title <span class="required"></span>
@@ -45,7 +46,7 @@
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 label-align">Description </label>
                             <div class="col-md-6 col-sm-6 ">
-                                {{privacy_form.description}}
+                                {{ privacy_form.description }}
                             </div>
                         </div>
                         
