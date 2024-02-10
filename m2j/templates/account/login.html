@@ -5,58 +5,78 @@
 
 {% block head_title %}{{ block.super }}{% trans "Sign In" %}{% endblock %}
 
+
 {% block content %}
-<form class="getin_form border-form" id="login" method="POST" action="{% url 'account_login' %}">
-	{% csrf_token %}
-	<div class="row">
-		<div class="col-md-12 col-sm-12">
-			<div class="form-group bottom35">
-				<label for="loginEmail" class="d-none"></label>
-				<input class="form-control" type="text" placeholder="Username or Email" id="loginEmail" name="login" required>
-			</div>
-		</div>
-		<div class="col-md-12 col-sm-12">
-			<div class="form-group bottom35">
-				<label for="loginPass" class="d-none"></label>
-				<input class="form-control" type="password" placeholder="Password" id="loginPass" name="password" required>
-			</div>
-		</div>
-
-		{% if form.errors %}
-			{% for field in form %}
-				{% for error in field.errors %}
-					<div class="alert alert-danger">
-						<strong>{{ error|escape }}</strong>
-					</div>
-				{% endfor %}
-			{% endfor %}
-			{% for error in form.non_field_errors %}
-				<div class="alert alert-danger">
-					<strong>{{ error|escape }}</strong>
-				</div>
-			{% endfor %}
-		{% endif %}
-
-		{% if redirect_field_value %}
-			<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-		{% endif %}
-
-		<div class="col-md-12 col-sm-12">
-			<div class="form-group bottom30 ml-1">
-				<div class="form-check text-left">
-					<input class="form-check-input" checked type="checkbox" value="" id="rememberMe">
-					<label class="form-check-label" for="rememberMe">
-						Keep Me Signed In
-					</label>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-12">
-			<button class="button btn btn-red">Login</button>
-			<a href="reset-password.html" class="ml-2 defaultcolorblack text-underline">Forget password</a>?
-			<p class="top30 mb-0"> Back to top &nbsp;<a href="{% url 'app_core:index' %}" class="defaultcolorblack text-underline">Home</a> </p>
-		</div>
+<div class="col-md-12 text-center wow fadeIn" data-wow-delay="300ms">
+	<h2 class="heading bottom30 defaultcolorblack font-light2"><span class="font-weight-bold">Log</span> In
+		<span class="divider-center"></span>
+	</h2>
+	<!-- <div class="col-md-8 offset-md-2 heading_space">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolores explicabo laudantium, omnis provident quam reiciendis voluptatum?</p>
+	</div> -->
+</div>
+<div class="col-lg-6 pr-lg-0 col-md-12 d-none d-lg-block">
+	<div class=" image login-image h-100">
+		<img src="{% static 'app_core/construction/images/login.webp' %}" alt="" class="">
 	</div>
-</form>
+</div>
+<div class="col-lg-6 pl-lg-0 col-md-12 whitebox noshadow">
+	<div class="widget logincontainer">
+		<h3 class="defaultcolorblack bottom30 text-center text-lg-left">Log In </h3>
+		
+		<form class="getin_form border-form" id="login" method="POST" action="{% url 'account_login' %}">
+			{% csrf_token %}
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<div class="form-group bottom35">
+						<label for="loginEmail" class="d-none"></label>
+						<input class="form-control" type="text" placeholder="Username or Email" id="loginEmail" name="login" required>
+					</div>
+				</div>
+				<div class="col-md-12 col-sm-12">
+					<div class="form-group bottom35">
+						<label for="loginPass" class="d-none"></label>
+						<input class="form-control" type="password" placeholder="Password" id="loginPass" name="password" required>
+					</div>
+				</div>
+		
+				{% if form.errors %}
+					{% for field in form %}
+						{% for error in field.errors %}
+							<div class="alert alert-danger">
+								<strong>{{ error|escape }}</strong>
+							</div>
+						{% endfor %}
+					{% endfor %}
+					{% for error in form.non_field_errors %}
+						<div class="alert alert-danger">
+							<strong>{{ error|escape }}</strong>
+						</div>
+					{% endfor %}
+				{% endif %}
+		
+				{% if redirect_field_value %}
+					<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+				{% endif %}
+		
+				<div class="col-md-12 col-sm-12">
+					<div class="form-group bottom30 ml-1">
+						<div class="form-check text-left">
+							<input class="form-check-input" checked type="checkbox" value="" id="rememberMe">
+							<label class="form-check-label" for="rememberMe">
+								Keep Me Signed In
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12">
+					<button class="button btn btn-red">Login</button>
+					<a href="reset-password.html" class="ml-2 defaultcolorblack text-underline">Forget password</a>?
+					<p class="top30 mb-0"> Back to top &nbsp;<a href="{% url 'app_core:index' %}" class="defaultcolorblack text-underline">Home</a> </p>
+				</div>
+			</div>
+		</form>
 
+	</div>
+</div>
 {% endblock content %}

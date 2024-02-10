@@ -23,6 +23,7 @@
             box-sizing: border-box; /* Esto asegura que el padding y el borde no afecten las dimensiones totales */
         }
     </style>
+    {% block extra_styles %} {% endblock extra_styles %}
 </head>
 <body>
 <!--PreLoader-->
@@ -35,25 +36,9 @@
 <section id="sign-in" class="bglight position-relative padding">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 text-center wow fadeIn" data-wow-delay="300ms">
-                <h2 class="heading bottom30 defaultcolorblack font-light2"><span class="font-weight-bold">Log</span> In
-                    <span class="divider-center"></span>
-                </h2>
-                <!-- <div class="col-md-8 offset-md-2 heading_space">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolores explicabo laudantium, omnis provident quam reiciendis voluptatum?</p>
-                </div> -->
-            </div>
-            <div class="col-lg-6 pr-lg-0 col-md-12 d-none d-lg-block">
-                <div class=" image login-image h-100">
-                    <img src="{% static 'app_core/construction/images/login.png' %}" alt="" class="">
-                </div>
-            </div>
-            <div class="col-lg-6 pl-lg-0 col-md-12 whitebox noshadow">
-                <div class="widget logincontainer">
-                    <h3 class="defaultcolorblack bottom30 text-center text-lg-left">Log In </h3>
-                    {% block content %} {% endblock content %}
-                </div>
-            </div>
+            
+            {% block content %} {% endblock content %}
+
         </div>
     </div>
 </section>
@@ -109,5 +94,6 @@
 <script src="{% static 'app_core/vendor/js/extensions/revolution.extension.video.min.js' %}"></script>
 <!--custom functions and script-->
 <script src="{% static 'app_core/construction/js/functions.js' %}"></script>
+{% block extra_javascript %} {% endblock extra_javascript %}
 </body>
 </html>

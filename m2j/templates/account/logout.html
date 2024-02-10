@@ -5,33 +5,54 @@
 
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
 
+{% block extra_styles %} {% endblock extra_styles %}
+
 {% block content %}
 
-<form method="POST" action="{% url 'account_logout' %}" class="login100-form validate-form">
-   {% csrf_token %}
-   {% if redirect_field_value %}
-   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-   {% endif %}
-   <span class="login100-form-logo">
-      <img src="{% static 'app_core/assets/img/dp.jpg' %}" class="imgroundcorners" alt="John Doe">
-   </span>
-   <span class="login100-form-title  p-t-27">
-      {% trans "Sign Out" %}
-   </span>
-   <p class="text-center txt-locked">
-      {% trans 'Are you sure you want to sign out?' %}
-   </p>
-   <div class="container-login100-form-btn">
-      <button type="submit" class="login100-form-btn">
-         {% trans 'Sign Out' %}
-      </button>
-      <a id="back-link" class="btn btn-circle yellow" style="font-size: 18px; text-transform: capitalize;">Cancelar</a>
-   </div>
-</form>
+<div class="col-md-12 text-center wow fadeIn" data-wow-delay="300ms">
+	<h2 class="heading bottom30 defaultcolorblack font-light2"><span class="font-weight-bold">Sign</span> Out
+		<span class="divider-center"></span>
+	</h2>
+	<!-- <div class="col-md-8 offset-md-2 heading_space">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolores explicabo laudantium, omnis provident quam reiciendis voluptatum?</p>
+	</div> -->
+</div>
+<div class="col-lg-6 pr-lg-0 col-md-12 d-none d-lg-block">
+	<div class=" image login-image h-100">
+		<img src="{% static 'app_core/construction/images/login.webp' %}" alt="" class="">
+	</div>
+</div>
+<div class="col-lg-6 pl-lg-0 col-md-12 whitebox noshadow">
+	<div class="widget logincontainer">
+		<h3 class="defaultcolorblack bottom30 text-center text-lg-left">Sign Out </h3>
+		
+		<form method="POST" action="{% url 'account_logout' %}" class="login100-form validate-form">
+         {% csrf_token %}
+         {% if redirect_field_value %}
+         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+         {% endif %}
+         <span class="login100-form-logo">
+            <img src="{% static 'app_user/images/user.png' %}" class="imgroundcorners" alt="John Doe">
+         </span>
+         <!-- <span class="login100-form-title  p-t-27">
+            {% trans "Sign Out" %}
+         </span> -->
+         <h3 style="padding: 15px 15px; text-align: center;">
+            {% trans 'Are you sure you want to sign out?' %}
+         </h3>
+         <div class="container-login100-form-btn">
+            <button type="submit" class="btn btn-red" style="text-transform: capitalize;">
+               {% trans 'Sign Out' %}
+            </button>
+            <a id="back-link" class="btn btn-blue" style="text-transform: capitalize;">Back</a>
+         </div>
+      </form>
 
+	</div>
+</div>
 {% endblock %}
 
-{% block extra_js %}
+{% block extra_javascript %}
 <script>
    var element = document.getElementById('back-link');
    element.setAttribute('href', document.referrer);
@@ -40,4 +61,4 @@
       return false;
    }
 </script>
-{% endblock extra_js %}
+{% endblock extra_javascript %}
