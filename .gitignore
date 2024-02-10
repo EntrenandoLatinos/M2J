@@ -1,9 +1,15 @@
 # Archivos de caché
 __pycache__/
 *.pyc
-/media/
+
+#App migrations and media folders
+m2j/app_core/migrations/
+m2j/app_user/migrations/
+m2j/media/
+m2j/static/
 
 # Archivos de migraciones
+migrations/*
 *_initial.py
 
 # Base de datos SQLite
