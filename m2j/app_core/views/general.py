@@ -41,11 +41,12 @@ def index(request):
     return render(request, 'app_core/pages/index.html', context)
 
 def about(request):
+  contact = Contact.objects.all().last()
   about = About.objects.all().last()
   skills = Skill.objects.all().last()
   servicios = Service.objects.all()
   social_media = SocialMedia.objects.all()
-  context = {'servicios':servicios, 'about':about, 'skills':skills, 'social_media':social_media}
+  context = {'contact':contact, 'servicios':servicios, 'about':about, 'skills':skills, 'social_media':social_media}
   if request.method == 'POST':
     if 'stay_connected' in request.POST:
       username = request.POST.get('userName')
@@ -60,9 +61,10 @@ def about(request):
     return render(request, 'app_core/pages/about.html', context)
 
 def services(request):
+  contact = Contact.objects.all().last()
   servicios = Service.objects.all()
   social_media = SocialMedia.objects.all()
-  context = {'servicios':servicios, 'social_media':social_media}
+  context = {'contact':contact, 'servicios':servicios, 'social_media':social_media}
   if request.method == 'POST':
     if 'stay_connected' in request.POST:
       username = request.POST.get('userName')
@@ -77,11 +79,12 @@ def services(request):
     return render(request, 'app_core/pages/services.html', context)
 
 def services_view(request, pk):
+  contact = Contact.objects.all().last()
   servicios = Service.objects.all()
   servicio = Service.objects.get(pk=pk)
   subservicios = SubService.objects.filter(service=pk)
   social_media = SocialMedia.objects.all()
-  context = {'servicio':servicio, 'servicios':servicios, 'subservicios':subservicios, 'social_media':social_media}
+  context = {'contact':contact, 'servicio':servicio, 'servicios':servicios, 'subservicios':subservicios, 'social_media':social_media}
   if request.method == 'POST':
     if 'stay_connected' in request.POST:
       username = request.POST.get('userName')
@@ -96,10 +99,12 @@ def services_view(request, pk):
     return render(request, 'app_core/pages/service.html', context)
 
 def works(request):
+  contact = Contact.objects.all().last()
   servicios = Service.objects.all()
   gallery = WorkImage.objects.all().order_by('?')
   social_media = SocialMedia.objects.all()
   context = {
+    'contact':contact,
     'servicios':servicios,
     'gallery':gallery,
     'social_media':social_media
@@ -118,10 +123,11 @@ def works(request):
     return render(request, 'app_core/pages/works.html', context)
 
 def faq(request):
+  contact = Contact.objects.all().last()
   faqs = Faq.objects.all()
   servicios = Service.objects.all()
   social_media = SocialMedia.objects.all()
-  context = {'servicios':servicios, 'faqs':faqs, 'social_media':social_media}
+  context = {'contact':contact, 'servicios':servicios, 'faqs':faqs, 'social_media':social_media}
   if request.method == 'POST':
     if 'stay_connected' in request.POST:
       username = request.POST.get('userName')
@@ -166,10 +172,11 @@ def contact(request):
     return render(request, 'app_core/pages/contact.html', context)
 
 def privacy(request):
+  contact = Contact.objects.all().last()
   servicios = Service.objects.all()
   privacy = Privacy.objects.all().last()
   social_media = SocialMedia.objects.all()
-  context = {'servicios':servicios, 'privacy':privacy, 'social_media':social_media}
+  context = {'contact':contact, 'servicios':servicios, 'privacy':privacy, 'social_media':social_media}
   if request.method == 'POST':
     if 'stay_connected' in request.POST:
       username = request.POST.get('userName')
