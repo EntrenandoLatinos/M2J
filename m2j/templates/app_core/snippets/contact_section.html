@@ -9,15 +9,15 @@
                         <span class="divider-center"></span>
                     </h2>
                     <div class="col-md-8 offset-md-2 bottom35">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolores explicabo laudantium,
-                            omnis provident quam reiciendis voluptatum?</p>
+                        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolores explicabo laudantium,
+                            omnis provident quam reiciendis voluptatum?</p> -->
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6 order-sm-2">
                     <div class="contact-meta px-2 text-center text-md-left">
                         <div class="heading-title heading_small">
                             <span class="defaultcolorcustomer mb-3">M2J Roofing</span>
-                            <h3 class="defaultcolorblack font-normal mb-4">Our Miami Agency</h3>
+                            <h3 class="defaultcolorblack font-normal mb-4">Our Connecticut Agency</h3>
                         </div>
                         <p class="bottom10">Address: {{contact.location}}</p>
                         <p class="bottom10">{{contact.phone1}}</p>
@@ -25,17 +25,16 @@
                         <p class="bottom10"><a href="mailto:polpo@MegaOneagency.co.uk">{{contact.email}}</a></p>
                         <p class="bottom10">Mon-Fri: 9am-5pm</p>
                         <ul class="social-icons mt-4 mb-4 mb-sm-0 wow fadeInUp no-border" data-wow-delay="300ms">
-                            <li><a href="javascript:void(0)" class="facebook"><i class="fab fa-facebook-f"></i> </a> </li>
-                            <li><a href="javascript:void(0)" class="twitter"><i class="fab fa-twitter"></i> </a> </li>
-                            <li><a href="javascript:void(0)" class="linkedin"><i class="fab fa-linkedin-in"></i> </a> </li>
-                            <li><a href="javascript:void(0)" class="insta"><i class="fab fa-instagram"></i> </a> </li>
-                            <!-- <li><a href="javascript:void(0)" class="facebook"><i class="fab fa-tiktok"></i> </a> </li> -->
+                            {% for social in social_media %}
+                                <li><a href="{{social.url}}" class="{{social.link_class}}" target="_blank"><i class="{{social.icon_class}}"></i> </a> </li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="heading-title  wow fadeInUp" data-wow-delay="300ms">
-                        <form class="getin_form wow fadeInUp" data-wow-delay="400ms" id="contact-form-data">
+                        <form class="getin_form wow fadeInUp" data-wow-delay="400ms" method="post">
+                            {% csrf_token %}
                             <div class="row px-2">
                                 <div class="col-md-12 col-sm-12" id="result"></div>
                                 <div class="col-md-12 col-sm-12">
@@ -48,7 +47,7 @@
                                 <div class="col-md-12 col-sm-12">
                                     <div class="form-group">
                                         <label for="email1" class="d-none"></label>
-                                        <input class="form-control" type="email" id="email1" placeholder="Email:"
+                                        <input class="form-control" type="email" id="email1" placeholder="Email:" required
                                             name="userEmail">
                                     </div>
                                 </div>
@@ -60,8 +59,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-12">
-                                    <button type="button" id="submit_btn1"
-                                        class="btn button btn-red w-100 contact_btn">Send</button>
+                                    <button type="submit" class="btn button btn-red w-100 contact_btn" name="contact_us_form">Send</button>
                                 </div>
                             </div>
                         </form>

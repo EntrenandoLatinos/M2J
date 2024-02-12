@@ -49,8 +49,8 @@ class Contact(AuditoriaFecha):
 
 class Banner(AuditoriaFecha):
     image = models.ImageField(upload_to='banner/', null=True, blank=True)
-    title = models.CharField("Banner title", max_length=30, null=True, blank=True)
-    subtitle = models.CharField("Banner subtitle", max_length=30, null=True, blank=True)
+    title = models.CharField("Banner title", max_length=30, null=True, blank=True, default="")
+    subtitle = models.CharField("Banner subtitle", max_length=30, null=True, blank=True, default="")
     description = models.TextField("Description", max_length=73, null=True, blank=True)
 
     def __str__(self):
@@ -144,14 +144,38 @@ class WorkImage(AuditoriaFecha):
     def __str__(self):
         return "{0}".format(str(self.title))
     
+    def bytes_to_mb(self, bytes):
+        mb = bytes / 1000000
+        return mb
+    
     def save(self, *args, **kwargs):
         if not self._state.adding:
             super().save(*args, **kwargs)
             return
         super().save(*args, **kwargs)
+        
         img = Image.open(self.image.path)
-        img.save(self.image.path, quality=50)
-                 
+        # Obtiene el tamaño de la imagen en bytes
+        image_size = os.path.getsize(self.image.path)
+        img_size_mb = self.bytes_to_mb(image_size)
+
+        if img_size_mb < 1:
+            img_quality = 50
+        elif img_size_mb > 3:
+            img_quality = 18
+        else:
+            img_quality = 30
+
+        # Obtiene el ancho y alto de la imagen
+        width, height = img.size
+        if width > 1920 or height > 1920:
+            # Definir el nuevo ancho máximo
+            max_size = 1920
+            # Redimensionar la imagen con el ancho máximo proporcionado
+            img.thumbnail((max_size, max_size))
+
+        img.save(self.image.path, quality=img_quality)
+
     class Meta:
         ordering = ['id']
         verbose_name = 'WorkImage'

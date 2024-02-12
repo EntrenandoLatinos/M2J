@@ -7,7 +7,7 @@
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="footer_panel padding_bottom_half bottom20">
                     <a href="index-construction.html" class="footer_logo bottom25"><img src="{% static 'app_core/construction/images/logo_black.png' %}" alt="M2J"></a>
-                    <p class="whitecolor bottom25">Keep away from people who try to belittle your ambitions Small people always do that but the really great Friendly.</p>
+                    <p class="whitecolor bottom25">Roofing, Siding, Gutters, Windows, Flat Roof, Carpentry and Remodeling</p>
                     <div class="d-table w-100 address-item whitecolor bottom25">
                         <span class="d-table-cell align-middle"><i class="fas fa-mobile-alt"></i></span>
                         <p class="d-table-cell align-middle bottom0">
@@ -15,10 +15,9 @@
                         </p>
                     </div>
                     <ul class="social-icons white wow fadeInUp" data-wow-delay="300ms">
-                        <li><a href="javascript:void(0)" class="facebook"><i class="fab fa-facebook-f"></i> </a> </li>
-                        <li><a href="javascript:void(0)" class="twitter"><i class="fab fa-twitter"></i> </a> </li>
-                        <li><a href="javascript:void(0)" class="linkedin"><i class="fab fa-linkedin-in"></i> </a> </li>
-                        <li><a href="javascript:void(0)" class="insta"><i class="fab fa-instagram"></i> </a> </li>
+                        {% for social in social_media %}
+                            <li><a href="{{social.url}}" class="{{social.link_class}}" target="_blank"><i class="{{social.icon_class}}"></i> </a> </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

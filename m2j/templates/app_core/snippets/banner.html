@@ -41,7 +41,11 @@
                          data-transform_in="x:-50px;opacity:0;s:2000;e:Power3.easeOut;"
                          data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;"
                          data-start="1000" data-splitin="none" data-splitout="none">
-                        <h2 class="font-xlight whitecolor">{{banner.title}}</h2>
+                        <h2 class="font-xlight whitecolor">
+                        {% if banner.title %}
+                            {{banner.title}}
+                        {% endif %}
+                        </h2>
                     </div>
                     <div class="tp-caption tp-resizeme"
                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
@@ -53,7 +57,11 @@
                          data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
                          data-transform_out="s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
                          data-start="900" data-splitin="none" data-splitout="none">
-                        <h2 class="whitecolor">{{banner.subtitle}}</h2>
+                        <h2 class="whitecolor">
+                        {% if banner.subtitle %}
+                            {{banner.subtitle}}
+                        {% endif %}
+                        </h2>
                     </div>
                     <div class="tp-caption tp-resizeme"
                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
@@ -84,11 +92,10 @@
             </ul>
         </div>
     </div>
-    <ul class="social-icons social-icons-simple revicon white">
-        <li class="d-table"><a href="javascript:void(0)" class="facebook"><i class="fab fa-facebook-f"></i></a> </li>
-        <li class="d-table"><a href="javascript:void(0)" class="twitter"><i class="fab fa-twitter"></i> </a> </li>
-        <li class="d-table"><a href="javascript:void(0)" class="linkedin"><i class="fab fa-linkedin-in"></i> </a> </li>
-        <li class="d-table"><a href="javascript:void(0)" class="insta"><i class="fab fa-instagram"></i> </a> </li>
+    <ul class="social-icons social-icons-simple revicon white" data-wow-delay="300ms">
+        {% for social in social_media %}
+            <li class="d-table"><a href="{{social.url}}" class="{{social.link_class}}" target="_blank"><i class="{{social.icon_class}}"></i> </a> </li>
+        {% endfor %}
     </ul>
 </section>
 <!--Main Slider ends -->

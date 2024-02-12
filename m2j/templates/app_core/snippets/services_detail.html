@@ -14,14 +14,22 @@
                         {% endif %}
                     </div>
                     <div class="news_desc text-center text-md-left">
-                        <h3 class="text-capitalize font-normal defaultcolorblack"><a href="javascript:;">{{servicio.title}}</a></h3>
+                        <h3 class="text-capitalize font-normal defaultcolorblack"><a href="javascript:;">
+                        {% if servicio.title %}
+                            {{servicio.title}}
+                        {% endif %}
+                        </a></h3>
                         
                         <p class="bottom35" style="padding-top: 35px;">{{servicio.description | safe}}</p>
                         
                         <!-- EN ESTA PARTE VAN LOS SUBSERVICIOS -->
                         {% for subservice in subservicios %}
                             <div class="widget heading_space_half text-center text-md-left">
-                                <h3 class="defaultcolorblack font-normal bottom30">{{subservice.title}}</h3>
+                                <h3 class="defaultcolorblack font-normal bottom30">
+                                {% if subservice.title %}
+                                    {{subservice.title}}
+                                {% endif %}
+                                </h3>
                                 <p class="bottom30"> {{subservice.description | safe}} </p>
                                 <div class="item" style="text-align: center;">
                                     {% if subservice.image %}
