@@ -2230,7 +2230,7 @@ a.dropdown-toggle::after {
     content: '';
     position: absolute;
     /* background: #002e5b; */
-    background: #ffffff;
+    background: #000;
     display: inline-block;
     width: 0;
     height: 3px;
