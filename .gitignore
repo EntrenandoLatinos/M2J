@@ -2,6 +2,9 @@
 __pycache__/
 *.pyc
 
+# JetBrains IDE
+.idea/
+
 #App migrations and media folders
 m2j/app_core/migrations/
 m2j/app_user/migrations/
