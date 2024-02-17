@@ -213,7 +213,7 @@ class Partner(AuditoriaFecha):
         verbose_name_plural = 'Partners'
     
 class Faq(AuditoriaFecha):
-    title = models.CharField("Title", max_length=60, null=True, blank=True)
+    title = models.CharField("Title", null=True, blank=True)
     description = RichTextField("Description", null=True, blank=True)
 
     def __str__(self):
