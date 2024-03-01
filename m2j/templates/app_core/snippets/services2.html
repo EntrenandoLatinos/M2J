@@ -1,0 +1,39 @@
+{% load static %}
+
+<section id="ourblog" class="padding_top padding_bottom_half">
+    <div class="container">
+        <div class="col-md-12 text-center heading_space wow fadeIn" data-wow-delay="300ms">
+            <h2 class="heading bottom30 defaultcolorblack font-light2"><span class="font-weight-bold">Our</span> Services
+                <span class="divider-center"></span>
+            </h2>
+            <div class="col-md-8 offset-md-2">
+                <!-- <p class="mb-n3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolores explicabo laudantium, omnis provident quam reiciendis voluptatum?</p> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12" id="blog">
+                {% for service in servicios %}
+                    <article class="blog-item heading_space wow fadeIn text-center text-md-left" data-wow-delay="300ms">
+                        <div class="image">
+                            {% if service.image %}
+                                <img src="{{ service.image.url }}" alt="blog" class="border_radius">
+                            {% else %}
+                                <img src="{% static 'app_core/construction/images/service-1.jpg' %}" alt="blog" class="border_radius">
+                            {% endif %}
+                        </div>
+                        <h2 class="defaultcolorblack font-light bottom10 top30"> 
+                            <a href="{% url 'app_core:services_view' service.id %}">{{service.title}}</a>
+                        </h2>
+                        <div class="top15" style="padding-bottom: 15px;">
+                            {{service.description|safe}}
+                        </div>
+                        <blockquote class="blockquote defaultcolorblack heading_space">
+                            {{service.description_finish}}
+                        </blockquote>
+                        <a class=" button btn-red" href="{% url 'app_core:services_view' service.id %}">Read More</a>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

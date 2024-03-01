@@ -3287,7 +3287,7 @@ iframe {
 
 
 .bg-shop-quote {
-    background: url(../images/bg-about-header.jpg) no-repeat center center;
+    background: url(../images/Banner_sections.webp) no-repeat center center;
     -webkit-background-size: cover;
     background-size: cover;
 }
@@ -5324,7 +5324,7 @@ form.findus .select:after {
 .news_box:focus h4>a,
 .blog-item:hover h3>a,
 .blog-item:focus h3>a {
-    color: #fde428;
+    color: #be1319;
 }
 
 .blog-item:hover img {

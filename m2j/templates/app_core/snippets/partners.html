@@ -11,7 +11,13 @@
                     {% for partner in partners %}
                         <div class="item">
                             {% if partner.image %}
-                                <div class="logo-item"> <img alt="" src="{{partner.image.url}}"></div>
+                                {% if partner.url %}
+                                    <a href="{{partner.url}}" target="_blank">
+                                        <div class="logo-item"> <img alt="" src="{{partner.image.url}}"></div>    
+                                    </a>
+                                {% else %}
+                                    <div class="logo-item"> <img alt="" src="{{partner.image.url}}"></div>
+                                {% endif %}
                             {% else %}
                                 <div class="logo-item"> <img alt="" src="{% static 'app_core/construction/images/logo-1.png' %}"></div>
                             {% endif %}
