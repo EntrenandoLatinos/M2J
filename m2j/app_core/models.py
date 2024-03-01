@@ -62,12 +62,12 @@ class Banner(AuditoriaFecha):
         verbose_name_plural = 'Banners'
     
 class About(AuditoriaFecha):
-    image = models.ImageField(upload_to='about/', null=True, blank=True)
-    about = RichTextField("About", null=True, blank=True)
+    # image = models.ImageField(upload_to='about/', null=True, blank=True)
+    # about = RichTextField("About", null=True, blank=True)
     mision = RichTextField("Mission", null=True, blank=True)
     vision = RichTextField("Vision", null=True, blank=True)
-    image_google = models.ImageField(upload_to='about/', null=True, blank=True)
-    url_google = models.URLField("URL Google Business", null=True, blank=True)
+    # image_google = models.ImageField(upload_to='about/', null=True, blank=True)
+    # url_google = models.URLField("URL Google Business", null=True, blank=True)
 
     def __str__(self):
         return "{0}".format(str(self.id))
