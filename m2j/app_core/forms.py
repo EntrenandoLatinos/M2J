@@ -101,10 +101,10 @@ class TestimonialDeleteForm(forms.Form):
 class PartnerForm(forms.ModelForm):
     class Meta:
         model = Partner
-        fields = ['image',] # 'url']
-        # widgets = {
-        #     'url': forms.TextInput(attrs={'class': 'fom-rcontrol', 'type': 'url'}),
-        # }
+        fields = ['image', 'url']
+        widgets = {
+            'url': forms.TextInput(attrs={'class': 'fom-rcontrol', 'type': 'url'}),
+        }
 
 class FaqForm(forms.ModelForm):
     class Meta:
