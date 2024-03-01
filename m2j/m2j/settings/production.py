@@ -3,7 +3,7 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['157.245.208.206', '2604:a880:800:10::955:e001', 'localhost']
+ALLOWED_HOSTS = ['137.184.95.171', '2604:a880:4:1d0::21e:d000', '.m2jconstructionllc.com', 'localhost']
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
