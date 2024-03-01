@@ -9,23 +9,29 @@
             <div class="col-lg-6 col-md-6 col-sm-6 bottom10">
                 <div class="counters top10 bottom10">
                     {% if about.url_google %}
-                        <a href="{{about.url_google}}" target="_blank">
-                            <img src="{{about.image_google.url}}" alt="logo" style="width: 70%;">    
+                        <a href="{{ about.url_google }}" target="_blank">
+                            {% if about.image_google %}
+                                <img src="{{ about.image_google.url }}" alt="logo" style="width: 70%;">
+                            {% endif %}                            
                         </a>
                     {% else %}
-                        <img src="{{about.image_google.url}}" alt="logo" style="width: 70%;">
+                        {% if about.image_google %}
+                            <img src="{{ about.image_google.url }}" alt="logo" style="width: 70%;">
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>
-            
+
             <div class="col-lg-6 col-md-6 col-sm-6 bottom10">
                 <div class="counters top10 bottom10">
-                    <h2 class="heading defaultcolorblack font-light2"><span class="font-weight-bold">Review</span> Us Now!
+                    <h2 class="heading defaultcolorblack font-light2"><span class="font-weight-bold">Review</span> Us
+                        Now!
                         <span class="divider-center"></span>
                     </h2>
                     <!-- <ul class="social-iconscustom mt-4 mb-4 mb-sm-0 wow fadeInUp no-border" data-wow-delay="300ms">
                         {% for social in social_media %}
-                            <li><a href="{{social.url}}" class="{{social.link_class}}" target="_blank"><i class="{{social.icon_class}}"></i> </a> </li>
+                            <li><a href="{{social.url}}" class="{{social.link_class}}" target="_blank"><i class="
+                        {{social.icon_class}}"></i> </a> </li>
                         {% endfor %}
                     </ul> -->
                     <!-- <ul class="social-iconscustom mt-4 mb-4 mb-sm-0 wow fadeInUp no-border" data-wow-delay="300ms">
@@ -38,7 +44,7 @@
                     </ul> -->
                 </div>
             </div>
-            
+
         </div>
     </div>
 </section>
