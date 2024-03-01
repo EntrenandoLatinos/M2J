@@ -205,7 +205,7 @@ class Testimonial(AuditoriaFecha):
     
 class Partner(AuditoriaFecha):
     image = models.ImageField(upload_to='partner/', null=True, blank=True)
-    url = models.URLField("URL", null=True, blank=True)
+    # url = models.URLField("URL", null=True, blank=True)
 
     def __str__(self):
         return "{0}".format(str(self.id))
